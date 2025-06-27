@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="jp">
+<html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>薬物依存症と予防 - 教育リソース</title>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     /* === CSS Variables === */
@@ -58,7 +58,7 @@
     }
     
     body {
-      font-family: 'Noto Sans JP', sans-serif;
+      font-family: 'Noto Sans JP', 'Roboto', sans-serif;
       background-color: var(--clr-bg);
       color: var(--clr-text);
       line-height: 1.6;
@@ -117,6 +117,7 @@
       padding: var(--spacing-xl) 0;
       text-align: center;
       box-shadow: var(--shadow-md);
+      position: relative;
     }
     
     .header-content {
@@ -516,13 +517,205 @@
       border-radius: var(--radius-sm);
       font-size: var(--text-sm);
     }
+    
+    /* === Language Selector === */
+    .language-selector {
+      position: absolute;
+      top: var(--spacing-md);
+      right: var(--spacing-md);
+      display: flex;
+      gap: var(--spacing-xs);
+      z-index: 100;
+    }
+    
+    .lang-btn {
+      background-color: rgba(255, 255, 255, 0.2);
+      border: none;
+      border-radius: var(--radius-sm);
+      color: white;
+      padding: var(--spacing-xs) var(--spacing-sm);
+      cursor: pointer;
+      transition: var(--transition);
+      font-size: var(--text-sm);
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-xs);
+    }
+    
+    .lang-btn:hover {
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+    
+    .lang-btn.active {
+      background-color: white;
+      color: var(--clr-primary);
+      font-weight: 500;
+    }
+    
+    .lang-icon {
+      font-size: 1rem;
+    }
+    
+    .settings-panel {
+      background-color: var(--clr-card);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-md);
+      padding: var(--spacing-md);
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      z-index: 1000;
+      width: 90%;
+      max-width: 400px;
+      transition: transform 0.3s ease;
+    }
+    
+    .settings-panel.active {
+      transform: translate(-50%, -50%) scale(1);
+    }
+    
+    .settings-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .settings-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .settings-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--spacing-md);
+    }
+    
+    .settings-title {
+      font-size: var(--text-lg);
+      color: var(--clr-primary);
+    }
+    
+    .close-settings {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--clr-text);
+    }
+    
+    .theme-selector {
+      margin-top: var(--spacing-lg);
+    }
+    
+    .theme-options {
+      display: flex;
+      gap: var(--spacing-sm);
+      margin-top: var(--spacing-sm);
+    }
+    
+    .theme-btn {
+      flex: 1;
+      padding: var(--spacing-sm);
+      border: 2px solid #e0e0e0;
+      border-radius: var(--radius-sm);
+      background: none;
+      cursor: pointer;
+      transition: var(--transition);
+      text-align: center;
+    }
+    
+    .theme-btn:hover {
+      border-color: var(--clr-primary);
+    }
+    
+    .theme-btn.active {
+      border-color: var(--clr-primary);
+      background-color: rgba(63, 81, 181, 0.1);
+    }
+    
+    .theme-light {
+      background: linear-gradient(to right, #f4f7fa 50%, #ffffff 50%);
+    }
+    
+    .theme-dark {
+      background: linear-gradient(to right, #1e1e2e 50%, #2d2d44 50%);
+    }
+    
+    .theme-blue {
+      background: linear-gradient(to right, #e3f2fd 50%, #bbdefb 50%);
+    }
+    
+    .settings-btn {
+      position: fixed;
+      bottom: var(--spacing-md);
+      right: var(--spacing-md);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: var(--clr-primary);
+      color: white;
+      border: none;
+      box-shadow: var(--shadow-md);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      z-index: 100;
+      transition: var(--transition);
+    }
+    
+    .settings-btn:hover {
+      transform: rotate(30deg);
+      background-color: var(--clr-primary-dark);
+    }
+    
+    /* Dark mode */
+    body.dark-theme {
+      --clr-bg: #1e1e2e;
+      --clr-card: #2d2d44;
+      --clr-text: #e0e0e0;
+      --clr-light: #252536;
+      background-color: var(--clr-bg);
+      color: var(--clr-text);
+    }
+    
+    /* Blue theme */
+    body.blue-theme {
+      --clr-primary: #1976d2;
+      --clr-primary-light: #2196f3;
+      --clr-primary-dark: #0d47a1;
+      --clr-bg: #e3f2fd;
+      --clr-card: #ffffff;
+      --clr-text: #1a237e;
+      --clr-light: #bbdefb;
+    }
   </style>
 </head>
 <body>
   <header>
+    <div class="language-selector">
+      <button class="lang-btn" id="lang-ja">
+        <i class="fas fa-language lang-icon"></i> 日本語
+      </button>
+      <button class="lang-btn" id="lang-en">
+        <i class="fas fa-language lang-icon"></i> English
+      </button>
+    </div>
+    
     <div class="header-content">
-      <h1><i class="fas fa-ban"></i> 薬物依存症と予防</h1>
-      <p class="header-subtitle">薬物の危険性、依存症からの回復、予防策について学ぶ</p>
+      <h1><i class="fas fa-ban"></i> <span id="main-title">薬物依存症と予防</span></h1>
+      <p class="header-subtitle" id="main-subtitle">薬物の危険性、依存症からの回復、予防策について学ぶ</p>
     </div>
   </header>
   
@@ -533,26 +726,26 @@
         <div class="card animate-in">
           <div class="card-title">
             <i class="fas fa-pills"></i>
-            <h2>薬物とは？</h2>
+            <h2 id="card1-title">薬物とは？</h2>
           </div>
-          <p>
+          <p id="card1-text1">
             薬物とは、脳や身体に作用して一時的に感覚や意識を変化させる化学物質です。
             処方薬、市販薬、そして違法薬物など様々な種類がありますが、
             違法薬物は健康や社会に深刻な悪影響を及ぼすため、絶対に使用してはいけません。
           </p>
           
           <div class="warning-box">
-            <h3><i class="fas fa-exclamation-triangle"></i> 主な違法薬物の種類</h3>
+            <h3><i class="fas fa-exclamation-triangle"></i> <span id="card1-subtitle1">主な違法薬物の種類</span></h3>
             <ul style="margin-left: 1.5rem;">
-              <li><strong>覚せい剤</strong>: 中枢神経を興奮させ、依存性が極めて高い</li>
-              <li><strong>大麻</strong>: 思考能力を低下させ、精神障害のリスクを高める</li>
-              <li><strong>MDMA（エクスタシー）</strong>: 幻覚や脱水症状を引き起こす</li>
-              <li><strong>ヘロイン</strong>: 強い依存性と禁断症状を持つオピオイド</li>
-              <li><strong>コカイン</strong>: 心臓発作や精神障害のリスクが高い</li>
+              <li><strong id="drug1">覚せい剤</strong>: <span id="drug1-desc">中枢神経を興奮させ、依存性が極めて高い</span></li>
+              <li><strong id="drug2">大麻</strong>: <span id="drug2-desc">思考能力を低下させ、精神障害のリスクを高める</span></li>
+              <li><strong id="drug3">MDMA（エクスタシー）</strong>: <span id="drug3-desc">幻覚や脱水症状を引き起こす</span></li>
+              <li><strong id="drug4">ヘロイン</strong>: <span id="drug4-desc">強い依存性と禁断症状を持つオピオイド</span></li>
+              <li><strong id="drug5">コカイン</strong>: <span id="drug5-desc">心臓発作や精神障害のリスクが高い</span></li>
             </ul>
           </div>
           
-          <p>
+          <p id="card1-text2">
             薬物の使用は最初は「一度だけ」と思っても、多くの場合依存症に発展します。
             依存症は意志の弱さではなく、脳の機能変化による病気です。
           </p>
@@ -562,39 +755,39 @@
         <div class="card animate-in">
           <div class="card-title">
             <i class="fas fa-heartbeat"></i>
-            <h2>薬物の影響と危険性</h2>
+            <h2 id="card2-title">薬物の影響と危険性</h2>
           </div>
           
           <div class="info-box">
-            <h3><i class="fas fa-brain"></i> 身体への影響</h3>
+            <h3><i class="fas fa-brain"></i> <span id="card2-subtitle1">身体への影響</span></h3>
             <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
-              <li>脳細胞の破壊と認知機能の低下</li>
-              <li>心臓発作や不整脈のリスク増加</li>
-              <li>肝臓・腎臓機能の障害</li>
-              <li>免疫システムの弱体化</li>
-              <li>栄養失調と体重減少</li>
+              <li id="effect1">脳細胞の破壊と認知機能の低下</li>
+              <li id="effect2">心臓発作や不整脈のリスク増加</li>
+              <li id="effect3">肝臓・腎臓機能の障害</li>
+              <li id="effect4">免疫システムの弱体化</li>
+              <li id="effect5">栄養失調と体重減少</li>
             </ul>
           </div>
           
           <div class="warning-box">
-            <h3><i class="fas fa-exclamation-triangle"></i> 精神への影響</h3>
+            <h3><i class="fas fa-exclamation-triangle"></i> <span id="card2-subtitle2">精神への影響</span></h3>
             <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
-              <li>幻覚・妄想・パラノイア</li>
-              <li>うつ病や不安障害の発症</li>
-              <li>認知機能の低下と判断力の欠如</li>
-              <li>自殺念慮の増加</li>
-              <li>人格変化と社会的機能の低下</li>
+              <li id="effect6">幻覚・妄想・パラノイア</li>
+              <li id="effect7">うつ病や不安障害の発症</li>
+              <li id="effect8">認知機能の低下と判断力の欠如</li>
+              <li id="effect9">自殺念慮の増加</li>
+              <li id="effect10">人格変化と社会的機能の低下</li>
             </ul>
           </div>
           
           <div class="info-box">
-            <h3><i class="fas fa-users"></i> 社会的影響</h3>
+            <h3><i class="fas fa-users"></i> <span id="card2-subtitle3">社会的影響</span></h3>
             <ul style="margin-left: 1.5rem;">
-              <li>家族関係の崩壊</li>
-              <li>失業と経済的困窮</li>
-              <li>犯罪行為への関与</li>
-              <li>法的問題（逮捕・収監）</li>
-              <li>社会的信用の喪失</li>
+              <li id="effect11">家族関係の崩壊</li>
+              <li id="effect12">失業と経済的困窮</li>
+              <li id="effect13">犯罪行為への関与</li>
+              <li id="effect14">法的問題（逮捕・収監）</li>
+              <li id="effect15">社会的信用の喪失</li>
             </ul>
           </div>
         </div>
@@ -603,33 +796,33 @@
         <div class="card animate-in">
           <div class="card-title">
             <i class="fas fa-hands-helping"></i>
-            <h2>依存症から抜け出す方法</h2>
+            <h2 id="card3-title">依存症から抜け出す方法</h2>
           </div>
           
           <div class="success-box">
-            <h3><i class="fas fa-check-circle"></i> 回復へのステップ</h3>
+            <h3><i class="fas fa-check-circle"></i> <span id="card3-subtitle1">回復へのステップ</span></h3>
             <ol style="margin-left: 1.5rem; margin-bottom: 1rem;">
-              <li><strong>問題の認識</strong>: 自分が依存症であることを認める</li>
-              <li><strong>専門家の支援</strong>: 医師やカウンセラーに相談する</li>
-              <li><strong>デトックス</strong>: 医療監視下での解毒プログラム</li>
-              <li><strong>リハビリテーション</strong>: 専門施設での治療プログラム</li>
-              <li><strong>自助グループ</strong>: NA（ナルコティクス・アノニマス）などの参加</li>
-              <li><strong>再発防止</strong>: ストレス管理と健康的な代替活動</li>
+              <li><strong id="step1">問題の認識</strong>: <span id="step1-desc">自分が依存症であることを認める</span></li>
+              <li><strong id="step2">専門家の支援</strong>: <span id="step2-desc">医師やカウンセラーに相談する</span></li>
+              <li><strong id="step3">デトックス</strong>: <span id="step3-desc">医療監視下での解毒プログラム</span></li>
+              <li><strong id="step4">リハビリテーション</strong>: <span id="step4-desc">専門施設での治療プログラム</span></li>
+              <li><strong id="step5">自助グループ</strong>: <span id="step5-desc">NA（ナルコティクス・アノニマス）などの参加</span></li>
+              <li><strong id="step6">再発防止</strong>: <span id="step6-desc">ストレス管理と健康的な代替活動</span></li>
             </ol>
           </div>
           
           <div class="info-box">
-            <h3><i class="fas fa-hands-helping"></i> 家族ができるサポート</h3>
+            <h3><i class="fas fa-hands-helping"></i> <span id="card3-subtitle2">家族ができるサポート</span></h3>
             <ul style="margin-left: 1.5rem;">
-              <li>非難せずに依存症を理解する</li>
-              <li>専門家への相談を勧める</li>
-              <li>共依存にならない境界線を設定</li>
-              <li>家族自身のサポートグループ参加</li>
-              <li>再発しても諦めず継続的サポート</li>
+              <li id="support1">非難せずに依存症を理解する</li>
+              <li id="support2">専門家への相談を勧める</li>
+              <li id="support3">共依存にならない境界線を設定</li>
+              <li id="support4">家族自身のサポートグループ参加</li>
+              <li id="support5">再発しても諦めず継続的サポート</li>
             </ul>
           </div>
           
-          <p>
+          <p id="card3-text">
             回復には時間がかかりますが、適切な支援があれば依存症から抜け出すことは可能です。
             一人で悩まず、必ず専門家の助けを求めましょう。
           </p>
@@ -639,37 +832,37 @@
         <div class="card animate-in">
           <div class="card-title">
             <i class="fas fa-shield-alt"></i>
-            <h2>薬物使用を始めないために</h2>
+            <h2 id="card4-title">薬物使用を始めないために</h2>
           </div>
           
           <div class="success-box">
-            <h3><i class="fas fa-ban"></i> 予防策</h3>
+            <h3><i class="fas fa-ban"></i> <span id="card4-subtitle1">予防策</span></h3>
             <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
-              <li>薬物の危険性について正確な知識を持つ</li>
-              <li>ストレスに対処する健康的な方法を身につける</li>
-              <li>「NO」と言う勇気とスキルを養う</li>
-              <li>健全な友人関係を築く</li>
-              <li>目標を持ち、達成感を得られる活動に参加する</li>
+              <li id="prevention1">薬物の危険性について正確な知識を持つ</li>
+              <li id="prevention2">ストレスに対処する健康的な方法を身につける</li>
+              <li id="prevention3">「NO」と言う勇気とスキルを養う</li>
+              <li id="prevention4">健全な友人関係を築く</li>
+              <li id="prevention5">目標を持ち、達成感を得られる活動に参加する</li>
             </ul>
           </div>
           
           <div class="info-box">
-            <h3><i class="fas fa-user-friends"></i> 危険な状況を避ける</h3>
+            <h3><i class="fas fa-user-friends"></i> <span id="card4-subtitle2">危険な状況を避ける</span></h3>
             <ul style="margin-left: 1.5rem;">
-              <li>薬物が使われそうな場所・集まりを避ける</li>
-              <li>薬物使用者との関わりを断つ</li>
-              <li>アルコールや他の薬物の影響下で判断しない</li>
-              <li>SNSで知らない人からの誘いに注意</li>
+              <li id="avoid1">薬物が使われそうな場所・集まりを避ける</li>
+              <li id="avoid2">薬物使用者との関わりを断つ</li>
+              <li id="avoid3">アルコールや他の薬物の影響下で判断しない</li>
+              <li id="avoid4">SNSで知らない人からの誘いに注意</li>
             </ul>
           </div>
           
           <div class="warning-box">
-            <h3><i class="fas fa-exclamation-circle"></i> 危険な考え方のサイン</h3>
+            <h3><i class="fas fa-exclamation-circle"></i> <span id="card4-subtitle3">危険な考え方のサイン</span></h3>
             <ul style="margin-left: 1.5rem;">
-              <li>「一度だけなら大丈夫」</li>
-              <li>「自分は依存症にならない」</li>
-              <li>「ストレス解消に必要」</li>
-              <li>「みんなやっているから」</li>
+              <li id="warning1">「一度だけなら大丈夫」</li>
+              <li id="warning2">「自分は依存症にならない」</li>
+              <li id="warning3">「ストレス解消に必要」</li>
+              <li id="warning4">「みんなやっているから」</li>
             </ul>
           </div>
         </div>
@@ -678,38 +871,38 @@
         <div class="card animate-in">
           <div class="card-title">
             <i class="fas fa-exclamation-triangle"></i>
-            <h2>薬物を誤って購入・使用しないために</h2>
+            <h2 id="card5-title">薬物を誤って購入・使用しないために</h2>
           </div>
           
           <div class="info-box">
-            <h3><i class="fas fa-shopping-cart"></i> オンラインでの安全対策</h3>
+            <h3><i class="fas fa-shopping-cart"></i> <span id="card5-subtitle1">オンラインでの安全対策</span></h3>
             <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
-              <li>信頼できないサイトから薬品を購入しない</li>
-              <li>「合法ハーブ」などと称する製品に注意</li>
-              <li>海外からの個人輸入は特に危険</li>
-              <li>成分表示のないサプリメントは避ける</li>
-              <li>クレジットカード情報を安易に入力しない</li>
+              <li id="online1">信頼できないサイトから薬品を購入しない</li>
+              <li id="online2">「合法ハーブ」などと称する製品に注意</li>
+              <li id="online3">海外からの個人輸入は特に危険</li>
+              <li id="online4">成分表示のないサプリメントは避ける</li>
+              <li id="online5">クレジットカード情報を安易に入力しない</li>
             </ul>
           </div>
           
           <div class="warning-box">
-            <h3><i class="fas fa-cocktail"></i> 飲み物・食べ物の安全確保</h3>
+            <h3><i class="fas fa-cocktail"></i> <span id="card5-subtitle2">飲み物・食べ物の安全確保</span></h3>
             <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
-              <li>見知らぬ人からの飲み物を受け取らない</li>
-              <li>目を離した飲み物は飲まない</li>
-              <li>封を開けた状態で提供される飲み物に注意</li>
-              <li>パーティーなどで共通のボウルから取った食べ物は避ける</li>
+              <li id="food1">見知らぬ人からの飲み物を受け取らない</li>
+              <li id="food2">目を離した飲み物は飲まない</li>
+              <li id="food3">封を開けた状態で提供される飲み物に注意</li>
+              <li id="food4">パーティーなどで共通のボウルから取った食べ物は避ける</li>
             </ul>
           </div>
           
           <div class="success-box">
-            <h3><i class="fas fa-first-aid"></i> もし危険を感じたら</h3>
+            <h3><i class="fas fa-first-aid"></i> <span id="card5-subtitle3">もし危険を感じたら</span></h3>
             <ul style="margin-left: 1.5rem;">
-              <li>すぐにその場を離れる</li>
-              <li>信頼できる友人に連絡する</li>
-              <li>110番（警察）や救急車を呼ぶ</li>
-              <li>異変を感じたら迷わず医療機関を受診</li>
-              <li>後日、警察に通報する</li>
+              <li id="action1">すぐにその場を離れる</li>
+              <li id="action2">信頼できる友人に連絡する</li>
+              <li id="action3">110番（警察）や救急車を呼ぶ</li>
+              <li id="action4">異変を感じたら迷わず医療機関を受診</li>
+              <li id="action5">後日、警察に通報する</li>
             </ul>
           </div>
         </div>
@@ -718,9 +911,9 @@
         <div class="card quiz-card animate-in">
           <div class="card-title">
             <i class="fas fa-question"></i>
-            <h2>薬物知識クイズ</h2>
+            <h2 id="quiz-title">薬物知識クイズ</h2>
           </div>
-          <p>薬物依存症と予防に関する知識をテストしましょう！以下のクイズに答えて理解度を確認してください。</p>
+          <p id="quiz-description">薬物依存症と予防に関する知識をテストしましょう！以下のクイズに答えて理解度を確認してください。</p>
           
           <div class="quiz-counter">
             <div class="counter-dot active" id="dot-1"></div>
@@ -732,130 +925,130 @@
           
           <!-- Question 1 -->
           <div class="question current" id="question-1">
-            <h3>1. 薬物依存症から回復するための最初のステップは？</h3>
+            <h3 id="q1-text">1. 薬物依存症から回復するための最初のステップは？</h3>
             <div class="quiz-options">
               <label class="quiz-option">
                 <input type="radio" name="q1" value="問題の認識">
-                問題の認識と依存症の自覚
+                <span id="q1-option1">問題の認識と依存症の自覚</span>
               </label>
               
               <label class="quiz-option">
                 <input type="radio" name="q1" value="自己治療">
-                自分だけで治療を試みる
+                <span id="q1-option2">自分だけで治療を試みる</span>
               </label>
               
               <label class="quiz-option">
                 <input type="radio" name="q1" value="環境変更">
-                住む場所を変える
+                <span id="q1-option3">住む場所を変える</span>
               </label>
               
               <label class="quiz-option">
                 <input type="radio" name="q1" value="友人変更">
-                友人を全員変える
+                <span id="q1-option4">友人を全員変える</span>
               </label>
             </div>
           </div>
           
           <!-- Question 2 -->
           <div class="question" id="question-2" style="display: none;">
-            <h3>2. 薬物を誤って摂取しないために注意すべきことは？（複数選択可）</h3>
+            <h3 id="q2-text">2. 薬物を誤って摂取しないために注意すべきことは？（複数選択可）</h3>
             <div class="quiz-options">
               <label class="quiz-option">
                 <input type="checkbox" name="q2" value="飲み物管理">
-                目を離した飲み物を飲まない
+                <span id="q2-option1">目を離した飲み物を飲まない</span>
               </label>
               
               <label class="quiz-option">
                 <input type="checkbox" name="q2" value="信頼できないサイト">
-                信頼できないサイトから薬品を購入しない
+                <span id="q2-option2">信頼できないサイトから薬品を購入しない</span>
               </label>
               
               <label class="quiz-option">
                 <input type="checkbox" name="q2" value="成分表示">
-                成分表示のないサプリメントを避ける
+                <span id="q2-option3">成分表示のないサプリメントを避ける</span>
               </label>
               
               <label class="quiz-option">
                 <input type="checkbox" name="q2" value="見知らぬ人">
-                見知らぬ人からの飲食物を受け取らない
+                <span id="q2-option4">見知らぬ人からの飲食物を受け取らない</span>
               </label>
             </div>
           </div>
           
           <!-- Question 3 -->
           <div class="question" id="question-3" style="display: none;">
-            <h3>3. 薬物使用を予防する効果的な方法は？</h3>
+            <h3 id="q3-text">3. 薬物使用を予防する効果的な方法は？</h3>
             <div class="quiz-options">
               <label class="quiz-option">
                 <input type="radio" name="q3" value="知識とスキル">
-                薬物の危険性について学び、断るスキルを身につける
+                <span id="q3-option1">薬物の危険性について学び、断るスキルを身につける</span>
               </label>
               
               <label class="quiz-option">
                 <input type="radio" name="q3" value="体験">
-                一度試してその危険性を実感する
+                <span id="q3-option2">一度試してその危険性を実感する</span>
               </label>
               
               <label class="quiz-option">
                 <input type="radio" name="q3" value="友人選択">
-                薬物を使用している友人とだけ付き合う
+                <span id="q3-option3">薬物を使用している友人とだけ付き合う</span>
               </label>
               
               <label class="quiz-option">
                 <input type="radio" name="q3" value="自己管理">
-                自己管理能力を過信する
+                <span id="q3-option4">自己管理能力を過信する</span>
               </label>
             </div>
           </div>
           
           <!-- Question 4 -->
           <div class="question" id="question-4" style="display: none;">
-            <h3>4. 薬物依存症の治療に有効なアプローチは？（複数選択可）</h3>
+            <h3 id="q4-text">4. 薬物依存症の治療に有効なアプローチは？（複数選択可）</h3>
             <div class="quiz-options">
               <label class="quiz-option">
                 <input type="checkbox" name="q4" value="医療デトックス">
-                医療監視下での解毒プログラム
+                <span id="q4-option1">医療監視下での解毒プログラム</span>
               </label>
               
               <label class="quiz-option">
                 <input type="checkbox" name="q4" value="カウンセリング">
-                認知行動療法などのカウンセリング
+                <span id="q4-option2">認知行動療法などのカウンセリング</span>
               </label>
               
               <label class="quiz-option">
                 <input type="checkbox" name="q4" value="自助グループ">
-                NA（ナルコティクス・アノニマス）などの自助グループ
+                <span id="q4-option3">NA（ナルコティクス・アノニマス）などの自助グループ</span>
               </label>
               
               <label class="quiz-option">
                 <input type="checkbox" name="q4" value="再発防止">
-                再発防止計画の策定
+                <span id="q4-option4">再発防止計画の策定</span>
               </label>
             </div>
           </div>
           
           <!-- Question 5 -->
           <div class="question" id="question-5" style="display: none;">
-            <h3>5. 薬物の影響で起こりうる精神的な問題は？</h3>
+            <h3 id="q5-text">5. 薬物の影響で起こりうる精神的な問題は？</h3>
             <div class="quiz-options">
               <label class="quiz-option">
                 <input type="radio" name="q5" value="すべて">
-                幻覚、妄想、うつ病、不安障害などすべて
+                <span id="q5-option1">幻覚、妄想、うつ病、不安障害などすべて</span>
               </label>
               
               <label class="quiz-option">
                 <input type="radio" name="q5" value="幻覚のみ">
-                幻覚のみ
+                <span id="q5-option2">幻覚のみ</span>
               </label>
               
               <label class="quiz-option">
                 <input type="radio" name="q5" value="身体症状">
-                身体的な症状のみ
+                <span id="q5-option3">身体的な症状のみ</span>
               </label>
               
               <label class="quiz-option">
                 <input type="radio" name="q5" value="一時的">
-                一時的な気分の変化のみ
+                <span id="q5-option4">一時的な気分の変化のみ</span>
               </label>
             </div>
           </div>
@@ -864,72 +1057,72 @@
           <div class="results-container" id="results-container" style="display: none;">
             <div class="score-display">
               <div class="score-percentage" id="score-percentage">0%</div>
-              <p>あなたのスコア: <span id="score-text">0</span>/5</p>
+              <p id="score-text">あなたのスコア: <span id="score-value">0</span>/5</p>
             </div>
             
             <div class="results-summary">
-              <h3><i class="fas fa-clipboard-check"></i> クイズ結果の詳細</h3>
+              <h3><i class="fas fa-clipboard-check"></i> <span id="result-title">クイズ結果の詳細</span></h3>
               
               <div class="result-item" id="result-1">
-                <h4><i class="fas fa-question-circle"></i> 質問1: 薬物依存症から回復するための最初のステップは？</h4>
-                <p>あなたの回答: <span class="user-answer"></span></p>
-                <p>正解: 問題の認識と依存症の自覚</p>
+                <h4><i class="fas fa-question-circle"></i> <span id="result-q1">質問1: 薬物依存症から回復するための最初のステップは？</span></h4>
+                <p id="result-answer1">あなたの回答: <span class="user-answer"></span></p>
+                <p id="result-correct1">正解: 問題の認識と依存症の自覚</p>
                 <div class="explanation">
-                  <p><strong>解説:</strong> 回復の第一歩は自分が依存症であることを認めることです。否認は依存症の特徴でもあり、このステップをクリアしなければ治療は始まりません。</p>
+                  <p><strong id="result-exp1">解説:</strong> <span id="result-exp1-text">回復の第一歩は自分が依存症であることを認めることです。否認は依存症の特徴でもあり、このステップをクリアしなければ治療は始まりません。</span></p>
                 </div>
               </div>
               
               <div class="result-item" id="result-2">
-                <h4><i class="fas fa-question-circle"></i> 質問2: 薬物を誤って摂取しないために注意すべきことは？</h4>
-                <p>あなたの回答: <span class="user-answer"></span></p>
-                <p>正解: 目を離した飲み物を飲まない, 信頼できないサイトから薬品を購入しない, 成分表示のないサプリメントを避ける, 見知らぬ人からの飲食物を受け取らない</p>
+                <h4><i class="fas fa-question-circle"></i> <span id="result-q2">質問2: 薬物を誤って摂取しないために注意すべきことは？</span></h4>
+                <p id="result-answer2">あなたの回答: <span class="user-answer"></span></p>
+                <p id="result-correct2">正解: 目を離した飲み物を飲まない, 信頼できないサイトから薬品を購入しない, 成分表示のないサプリメントを避ける, 見知らぬ人からの飲食物を受け取らない</p>
                 <div class="explanation">
-                  <p><strong>解説:</strong> これらのすべての対策が、意図せず薬物を摂取してしまうリスクを減らします。特にパーティーなどでは飲み物から目を離さないことが重要です。</p>
+                  <p><strong id="result-exp2">解説:</strong> <span id="result-exp2-text">これらのすべての対策が、意図せず薬物を摂取してしまうリスクを減らします。特にパーティーなどでは飲み物から目を離さないことが重要です。</span></p>
                 </div>
               </div>
               
               <div class="result-item" id="result-3">
-                <h4><i class="fas fa-question-circle"></i> 質問3: 薬物使用を予防する効果的な方法は？</h4>
-                <p>あなたの回答: <span class="user-answer"></span></p>
-                <p>正解: 薬物の危険性について学び、断るスキルを身につける</p>
+                <h4><i class="fas fa-question-circle"></i> <span id="result-q3">質問3: 薬物使用を予防する効果的な方法は？</span></h4>
+                <p id="result-answer3">あなたの回答: <span class="user-answer"></span></p>
+                <p id="result-correct3">正解: 薬物の危険性について学び、断るスキルを身につける</p>
                 <div class="explanation">
-                  <p><strong>解説:</strong> 予防には知識とスキルが不可欠です。薬物の危険性を理解し、実際に誘われた時に「NO」と言える技術を身につけることが最も効果的です。</p>
+                  <p><strong id="result-exp3">解説:</strong> <span id="result-exp3-text">予防には知識とスキルが不可欠です。薬物の危険性を理解し、実際に誘われた時に「NO」と言える技術を身につけることが最も効果的です。</span></p>
                 </div>
               </div>
               
               <div class="result-item" id="result-4">
-                <h4><i class="fas fa-question-circle"></i> 質問4: 薬物依存症の治療に有効なアプローチは？</h4>
-                <p>あなたの回答: <span class="user-answer"></span></p>
-                <p>正解: 医療監視下での解毒プログラム, 認知行動療法などのカウンセリング, NAなどの自助グループ, 再発防止計画の策定</p>
+                <h4><i class="fas fa-question-circle"></i> <span id="result-q4">質問4: 薬物依存症の治療に有効なアプローチは？</span></h4>
+                <p id="result-answer4">あなたの回答: <span class="user-answer"></span></p>
+                <p id="result-correct4">正解: 医療監視下での解毒プログラム, 認知行動療法などのカウンセリング, NAなどの自助グループ, 再発防止計画の策定</p>
                 <div class="explanation">
-                  <p><strong>解説:</strong> 依存症治療は多面的なアプローチが必要です。身体的依存の治療だけでなく、心理的サポート、社会的支援、再発予防計画など包括的な対応が効果的です。</p>
+                  <p><strong id="result-exp4">解説:</strong> <span id="result-exp4-text">依存症治療は多面的なアプローチが必要です。身体的依存の治療だけでなく、心理的サポート、社会的支援、再発予防計画など包括的な対応が効果的です。</span></p>
                 </div>
               </div>
               
               <div class="result-item" id="result-5">
-                <h4><i class="fas fa-question-circle"></i> 質問5: 薬物の影響で起こりうる精神的な問題は？</h4>
-                <p>あなたの回答: <span class="user-answer"></span></p>
-                <p>正解: 幻覚、妄想、うつ病、不安障害などすべて</p>
+                <h4><i class="fas fa-question-circle"></i> <span id="result-q5">質問5: 薬物の影響で起こりうる精神的な問題は？</span></h4>
+                <p id="result-answer5">あなたの回答: <span class="user-answer"></span></p>
+                <p id="result-correct5">正解: 幻覚、妄想、うつ病、不安障害などすべて</p>
                 <div class="explanation">
-                  <p><strong>解説:</strong> 薬物は多様な精神的な問題を引き起こします。一時的な幻覚から、長期的なうつ病や不安障害まで、様々な精神疾患のリスクを高めます。</p>
+                  <p><strong id="result-exp5">解説:</strong> <span id="result-exp5-text">薬物は多様な精神的な問題を引き起こします。一時的な幻覚から、長期的なうつ病や不安障害まで、様々な精神疾患のリスクを高めます。</span></p>
                 </div>
               </div>
             </div>
             
             <button class="btn btn-block" onclick="restartQuiz()">
-              <i class="fas fa-redo"></i> クイズをやり直す
+              <i class="fas fa-redo"></i> <span id="restart-btn">クイズをやり直す</span>
             </button>
           </div>
           
           <div class="quiz-nav">
             <button class="btn btn-outline" id="prev-btn" style="display: none;" onclick="prevQuestion()">
-              <i class="fas fa-arrow-left"></i> 前の質問
+              <i class="fas fa-arrow-left"></i> <span id="prev-btn-text">前の質問</span>
             </button>
             <button class="btn" id="next-btn" onclick="nextQuestion()">
-              次の質問 <i class="fas fa-arrow-right"></i>
+              <span id="next-btn-text">次の質問</span> <i class="fas fa-arrow-right"></i>
             </button>
             <button class="btn btn-secondary" id="submit-btn" style="display: none;" onclick="submitQuiz()">
-              <i class="fas fa-paper-plane"></i> 結果を確認
+              <i class="fas fa-paper-plane"></i> <span id="submit-btn-text">結果を確認</span>
             </button>
           </div>
           
@@ -940,35 +1133,35 @@
         <div class="card animate-in">
           <div class="card-title">
             <i class="fas fa-hands-helping"></i>
-            <h2>支援と相談窓口</h2>
+            <h2 id="support-title">支援と相談窓口</h2>
           </div>
           
           <div class="info-box">
-            <h3><i class="fas fa-phone-alt"></i> 緊急連絡先</h3>
+            <h3><i class="fas fa-phone-alt"></i> <span id="emergency-title">緊急連絡先</span></h3>
             <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
-              <li><strong>警察</strong>: 110</li>
-              <li><strong>救急車</strong>: 119</li>
-              <li><strong>薬物依存症相談ホットライン</strong>: 0120-555-555</li>
-              <li><strong>自殺予防ホットライン</strong>: 0120-666-666</li>
+              <li><strong id="police">警察</strong>: 110</li>
+              <li><strong id="ambulance">救急車</strong>: 119</li>
+              <li><strong id="hotline">薬物依存症相談ホットライン</strong>: 0120-555-555</li>
+              <li><strong id="suicide">自殺予防ホットライン</strong>: 0120-666-666</li>
             </ul>
           </div>
           
           <div class="success-box">
-            <h3><i class="fas fa-hospital"></i> 治療施設</h3>
+            <h3><i class="fas fa-hospital"></i> <span id="treatment-title">治療施設</span></h3>
             <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
-              <li>国立精神・神経医療研究センター</li>
-              <li>各地域の精神保健福祉センター</li>
-              <li>民間の依存症治療施設</li>
-              <li>大学病院の精神科</li>
+              <li id="facility1">国立精神・神経医療研究センター</li>
+              <li id="facility2">各地域の精神保健福祉センター</li>
+              <li id="facility3">民間の依存症治療施設</li>
+              <li id="facility4">大学病院の精神科</li>
             </ul>
           </div>
           
           <div class="info-box">
-            <h3><i class="fas fa-users"></i> 自助グループ</h3>
+            <h3><i class="fas fa-users"></i> <span id="group-title">自助グループ</span></h3>
             <ul style="margin-left: 1.5rem;">
-              <li>ナルコティクス・アノニマス (NA)</li>
-              <li>ダルク (DARC) - 薬物依存症回復施設</li>
-              <li>家族の会 (薬物依存症の家族のためのサポート)</li>
+              <li id="group1">ナルコティクス・アノニマス (NA)</li>
+              <li id="group2">ダルク (DARC) - 薬物依存症回復施設</li>
+              <li id="group3">家族の会 (薬物依存症の家族のためのサポート)</li>
             </ul>
           </div>
         </div>
@@ -977,37 +1170,37 @@
         <div class="card links-card animate-in">
           <div class="card-title">
             <i class="fas fa-book"></i>
-            <h2>参考資料と関連情報</h2>
+            <h2 id="references-title">参考資料と関連情報</h2>
           </div>
           <ul class="links-list">
             <li>
               <i class="fas fa-external-link-alt"></i>
               <a href="https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000183317.html" target="_blank">
-                厚生労働省: 薬物乱用対策
+                <span id="link1">厚生労働省: 薬物乱用対策</span>
               </a>
             </li>
             <li>
               <i class="fas fa-external-link-alt"></i>
               <a href="https://www.ncnp.go.jp/" target="_blank">
-                国立精神・神経医療研究センター
+                <span id="link2">国立精神・神経医療研究センター</span>
               </a>
             </li>
             <li>
               <i class="fas fa-external-link-alt"></i>
               <a href="https://www.darc.jp/" target="_blank">
-                ダルク (DARC) - 薬物依存症回復施設
+                <span id="link3">ダルク (DARC) - 薬物依存症回復施設</span>
               </a>
             </li>
             <li>
               <i class="fas fa-external-link-alt"></i>
               <a href="https://na-japan.org/" target="_blank">
-                ナルコティクス・アノニマス日本
+                <span id="link4">ナルコティクス・アノニマス日本</span>
               </a>
             </li>
             <li>
               <i class="fas fa-external-link-alt"></i>
               <a href="https://www.who.int/health-topics/drug-abuse" target="_blank">
-                WHO: 薬物乱用情報
+                <span id="link5">WHO: 薬物乱用情報</span>
               </a>
             </li>
           </ul>
@@ -1017,45 +1210,528 @@
         <div class="card animate-in">
           <div class="card-title">
             <i class="fas fa-tags"></i>
-            <h2>関連トピック</h2>
+            <h2 id="tags-title">関連トピック</h2>
           </div>
           <div class="tags-container">
-            <span class="tag">薬物依存症</span>
-            <span class="tag">回復プログラム</span>
-            <span class="tag">再発防止</span>
-            <span class="tag">予防教育</span>
-            <span class="tag">デトックス</span>
-            <span class="tag">カウンセリング</span>
-            <span class="tag">自助グループ</span>
-            <span class="tag">家族サポート</span>
-            <span class="tag">違法薬物</span>
-            <span class="tag">処方薬乱用</span>
-            <span class="tag">脳への影響</span>
-            <span class="tag">身体的影響</span>
-            <span class="tag">精神的影響</span>
-            <span class="tag">社会的影響</span>
-            <span class="tag">危険な状況</span>
-            <span class="tag">オンライン安全</span>
-            <span class="tag">緊急対応</span>
-            <span class="tag">相談窓口</span>
-            <span class="tag">治療施設</span>
-            <span class="tag">回復ストーリー</span>
+            <span class="tag" id="tag1">薬物依存症</span>
+            <span class="tag" id="tag2">回復プログラム</span>
+            <span class="tag" id="tag3">再発防止</span>
+            <span class="tag" id="tag4">予防教育</span>
+            <span class="tag" id="tag5">デトックス</span>
+            <span class="tag" id="tag6">カウンセリング</span>
+            <span class="tag" id="tag7">自助グループ</span>
+            <span class="tag" id="tag8">家族サポート</span>
+            <span class="tag" id="tag9">違法薬物</span>
+            <span class="tag" id="tag10">処方薬乱用</span>
+            <span class="tag" id="tag11">脳への影響</span>
+            <span class="tag" id="tag12">身体的影響</span>
+            <span class="tag" id="tag13">精神的影響</span>
+            <span class="tag" id="tag14">社会的影響</span>
+            <span class="tag" id="tag15">危険な状況</span>
+            <span class="tag" id="tag16">オンライン安全</span>
+            <span class="tag" id="tag17">緊急対応</span>
+            <span class="tag" id="tag18">相談窓口</span>
+            <span class="tag" id="tag19">治療施設</span>
+            <span class="tag" id="tag20">回復ストーリー</span>
           </div>
         </div>
       </div>
     </div>
   </main>
   
-  <footer>
-    <div class="container">
-      <p>© 2025 薬物依存症予防教育リソース | 作成者: Mishchenko Sergey</p>
-      <p style="font-size: 0.8rem; margin-top: 0.5rem; opacity: 0.7;">
-        このサイトは教育目的で作成されており、医療アドバイスを提供するものではありません。問題がある場合は専門家に相談してください。
-      </p>
+<footer>
+  <div class="container">
+    <p id="footer-text">MIT License | 薬物依存症予防教育リソース | 著者 GitHub https://github.com/serbekun/serbekun</p>
+    <p id="footer-note" style="font-size: 0.8rem; margin-top: 0.5rem; opacity: 0.7;">
+      このサイトは教育目的で作成されており、医療アドバイスを提供するものではありません。問題がある場合は専門家に相談してください。
+    </p>
+  </div>
+</footer>
+
+  <button class="settings-btn" id="settings-btn">
+    <i class="fas fa-cog"></i>
+  </button>
+
+  <div class="settings-overlay" id="settings-overlay"></div>
+
+  <div class="settings-panel" id="settings-panel">
+    <div class="settings-header">
+      <h3 class="settings-title" id="settings-title">設定</h3>
+      <button class="close-settings" id="close-settings">
+        <i class="fas fa-times"></i>
+      </button>
     </div>
-  </footer>
+    
+    <div class="language-settings">
+      <h4 id="lang-title">言語設定</h4>
+      <div class="theme-options">
+        <button class="lang-btn active" id="panel-ja">
+          <i class="fas fa-language"></i> 日本語
+        </button>
+        <button class="lang-btn" id="panel-en">
+          <i class="fas fa-language"></i> English
+        </button>
+      </div>
+    </div>
+    
+    <div class="theme-selector">
+      <h4 id="theme-title">テーマ</h4>
+      <div class="theme-options">
+        <button class="theme-btn theme-light active" id="theme-light">
+          <span id="theme-light-text">ライト</span>
+        </button>
+        <button class="theme-btn theme-dark" id="theme-dark">
+          <span id="theme-dark-text">ダーク</span>
+        </button>
+        <button class="theme-btn theme-blue" id="theme-blue">
+          <span id="theme-blue-text">ブルー</span>
+        </button>
+      </div>
+    </div>
+  </div>
 
   <script>
+    // Language translations
+    const translations = {
+      ja: {
+        mainTitle: "薬物依存症と予防",
+        mainSubtitle: "薬物の危険性、依存症からの回復、予防策について学ぶ",
+        card1Title: "薬物とは？",
+        card1Text1: "薬物とは、脳や身体に作用して一時的に感覚や意識を変化させる化学物質です。処方薬、市販薬、そして違法薬物など様々な種類がありますが、違法薬物は健康や社会に深刻な悪影響を及ぼすため、絶対に使用してはいけません。",
+        card1Subtitle1: "主な違法薬物の種類",
+        drug1: "覚せい剤",
+        drug1Desc: "中枢神経を興奮させ、依存性が極めて高い",
+        drug2: "大麻",
+        drug2Desc: "思考能力を低下させ、精神障害のリスクを高める",
+        drug3: "MDMA（エクスタシー）",
+        drug3Desc: "幻覚や脱水症状を引き起こす",
+        drug4: "ヘロイン",
+        drug4Desc: "強い依存性と禁断症状を持つオピオイド",
+        drug5: "コカイン",
+        drug5Desc: "心臓発作や精神障害のリスクが高い",
+        card1Text2: "薬物の使用は最初は「一度だけ」と思っても、多くの場合依存症に発展します。依存症は意志の弱さではなく、脳の機能変化による病気です。",
+        card2Title: "薬物の影響と危険性",
+        card2Subtitle1: "身体への影響",
+        effect1: "脳細胞の破壊と認知機能の低下",
+        effect2: "心臓発作や不整脈のリスク増加",
+        effect3: "肝臓・腎臓機能の障害",
+        effect4: "免疫システムの弱体化",
+        effect5: "栄養失調と体重減少",
+        card2Subtitle2: "精神への影響",
+        effect6: "幻覚・妄想・パラノイア",
+        effect7: "うつ病や不安障害の発症",
+        effect8: "認知機能の低下と判断力の欠如",
+        effect9: "自殺念慮の増加",
+        effect10: "人格変化と社会的機能の低下",
+        card2Subtitle3: "社会的影響",
+        effect11: "家族関係の崩壊",
+        effect12: "失業と経済的困窮",
+        effect13: "犯罪行為への関与",
+        effect14: "法的問題（逮捕・収監）",
+        effect15: "社会的信用の喪失",
+        card3Title: "依存症から抜け出す方法",
+        card3Subtitle1: "回復へのステップ",
+        step1: "問題の認識",
+        step1Desc: "自分が依存症であることを認める",
+        step2: "専門家の支援",
+        step2Desc: "医師やカウンセラーに相談する",
+        step3: "デトックス",
+        step3Desc: "医療監視下での解毒プログラム",
+        step4: "リハビリテーション",
+        step4Desc: "専門施設での治療プログラム",
+        step5: "自助グループ",
+        step5Desc: "NA（ナルコティクス・アノニマス）などの参加",
+        step6: "再発防止",
+        step6Desc: "ストレス管理と健康的な代替活動",
+        card3Subtitle2: "家族ができるサポート",
+        support1: "非難せずに依存症を理解する",
+        support2: "専門家への相談を勧める",
+        support3: "共依存にならない境界線を設定",
+        support4: "家族自身のサポートグループ参加",
+        support5: "再発しても諦めず継続的サポート",
+        card3Text: "回復には時間がかかりますが、適切な支援があれば依存症から抜け出すことは可能です。一人で悩まず、必ず専門家の助けを求めましょう。",
+        card4Title: "薬物使用を始めないために",
+        card4Subtitle1: "予防策",
+        prevention1: "薬物の危険性について正確な知識を持つ",
+        prevention2: "ストレスに対処する健康的な方法を身につける",
+        prevention3: "「NO」と言う勇気とスキルを養う",
+        prevention4: "健全な友人関係を築く",
+        prevention5: "目標を持ち、達成感を得られる活動に参加する",
+        card4Subtitle2: "危険な状況を避ける",
+        avoid1: "薬物が使われそうな場所・集まりを避ける",
+        avoid2: "薬物使用者との関わりを断つ",
+        avoid3: "アルコールや他の薬物の影響下で判断しない",
+        avoid4: "SNSで知らない人からの誘いに注意",
+        card4Subtitle3: "危険な考え方のサイン",
+        warning1: "「一度だけなら大丈夫」",
+        warning2: "「自分は依存症にならない」",
+        warning3: "「ストレス解消に必要」",
+        warning4: "「みんなやっているから」",
+        card5Title: "薬物を誤って購入・使用しないために",
+        card5Subtitle1: "オンラインでの安全対策",
+        online1: "信頼できないサイトから薬品を購入しない",
+        online2: "「合法ハーブ」などと称する製品に注意",
+        online3: "海外からの個人輸入は特に危険",
+        online4: "成分表示のないサプリメントは避ける",
+        online5: "クレジットカード情報を安易に入力しない",
+        card5Subtitle2: "飲み物・食べ物の安全確保",
+        food1: "見知らぬ人からの飲み物を受け取らない",
+        food2: "目を離した飲み物は飲まない",
+        food3: "封を開けた状態で提供される飲み物に注意",
+        food4: "パーティーなどで共通のボウルから取った食べ物は避ける",
+        card5Subtitle3: "もし危険を感じたら",
+        action1: "すぐにその場を離れる",
+        action2: "信頼できる友人に連絡する",
+        action3: "110番（警察）や救急車を呼ぶ",
+        action4: "異変を感じたら迷わず医療機関を受診",
+        action5: "後日、警察に通報する",
+        quizTitle: "薬物知識クイズ",
+        quizDescription: "薬物依存症と予防に関する知識をテストしましょう！以下のクイズに答えて理解度を確認してください。",
+        q1Text: "1. 薬物依存症から回復するための最初のステップは？",
+        q1Option1: "問題の認識と依存症の自覚",
+        q1Option2: "自分だけで治療を試みる",
+        q1Option3: "住む場所を変える",
+        q1Option4: "友人を全員変える",
+        q2Text: "2. 薬物を誤って摂取しないために注意すべきことは？（複数選択可）",
+        q2Option1: "目を離した飲み物を飲まない",
+        q2Option2: "信頼できないサイトから薬品を購入しない",
+        q2Option3: "成分表示のないサプリメントを避ける",
+        q2Option4: "見知らぬ人からの飲食物を受け取らない",
+        q3Text: "3. 薬物使用を予防する効果的な方法は？",
+        q3Option1: "薬物の危険性について学び、断るスキルを身につける",
+        q3Option2: "一度試してその危険性を実感する",
+        q3Option3: "薬物を使用している友人とだけ付き合う",
+        q3Option4: "自己管理能力を過信する",
+        q4Text: "4. 薬物依存症の治療に有効なアプローチは？（複数選択可）",
+        q4Option1: "医療監視下での解毒プログラム",
+        q4Option2: "認知行動療法などのカウンセリング",
+        q4Option3: "NA（ナルコティクス・アノニマス）などの自助グループ",
+        q4Option4: "再発防止計画の策定",
+        q5Text: "5. 薬物の影響で起こりうる精神的な問題は？",
+        q5Option1: "幻覚、妄想、うつ病、不安障害などすべて",
+        q5Option2: "幻覚のみ",
+        q5Option3: "身体的な症状のみ",
+        q5Option4: "一時的な気分の変化のみ",
+        prevBtnText: "前の質問",
+        nextBtnText: "次の質問",
+        submitBtnText: "結果を確認",
+        resultTitle: "クイズ結果の詳細",
+        resultQ1: "質問1: 薬物依存症から回復するための最初のステップは？",
+        resultAnswer1: "あなたの回答:",
+        resultCorrect1: "正解: 問題の認識と依存症の自覚",
+        resultExp1: "解説:",
+        resultExp1Text: "回復の第一歩は自分が依存症であることを認めることです。否認は依存症の特徴でもあり、このステップをクリアしなければ治療は始まりません。",
+        resultQ2: "質問2: 薬物を誤って摂取しないために注意すべきことは？",
+        resultAnswer2: "あなたの回答:",
+        resultCorrect2: "正解: 目を離した飲み物を飲まない, 信頼できないサイトから薬品を購入しない, 成分表示のないサプリメントを避ける, 見知らぬ人からの飲食物を受け取らない",
+        resultExp2: "解説:",
+        resultExp2Text: "これらのすべての対策が、意図せず薬物を摂取してしまうリスクを減らします。特にパーティーなどでは飲み物から目を離さないことが重要です。",
+        resultQ3: "質問3: 薬物使用を予防する効果的な方法は？",
+        resultAnswer3: "あなたの回答:",
+        resultCorrect3: "正解: 薬物の危険性について学び、断るスキルを身につける",
+        resultExp3: "解説:",
+        resultExp3Text: "予防には知識とスキルが不可欠です。薬物の危険性を理解し、実際に誘われた時に「NO」と言える技術を身につけることが最も効果的です。",
+        resultQ4: "質問4: 薬物依存症の治療に有効なアプローチは？",
+        resultAnswer4: "あなたの回答:",
+        resultCorrect4: "正解: 医療監視下での解毒プログラム, 認知行動療法などのカウンセリング, NAなどの自助グループ, 再発防止計画の策定",
+        resultExp4: "解説:",
+        resultExp4Text: "依存症治療は多面的なアプローチが必要です。身体的依存の治療だけでなく、心理的サポート、社会的支援、再発予防計画など包括的な対応が効果的です。",
+        resultQ5: "質問5: 薬物の影響で起こりうる精神的な問題は？",
+        resultAnswer5: "あなたの回答:",
+        resultCorrect5: "正解: 幻覚、妄想、うつ病、不安障害などすべて",
+        resultExp5: "解説:",
+        resultExp5Text: "薬物は多様な精神的な問題を引き起こします。一時的な幻覚から、長期的なうつ病や不安障害まで、様々な精神疾患のリスクを高めます。",
+        restartBtn: "クイズをやり直す",
+        supportTitle: "支援と相談窓口",
+        emergencyTitle: "緊急連絡先",
+        police: "警察",
+        ambulance: "救急車",
+        hotline: "薬物依存症相談ホットライン",
+        suicide: "自殺予防ホットライン",
+        treatmentTitle: "治療施設",
+        facility1: "国立精神・神経医療研究センター",
+        facility2: "各地域の精神保健福祉センター",
+        facility3: "民間の依存症治療施設",
+        facility4: "大学病院の精神科",
+        groupTitle: "自助グループ",
+        group1: "ナルコティクス・アノニマス (NA)",
+        group2: "ダルク (DARC) - 薬物依存症回復施設",
+        group3: "家族の会 (薬物依存症の家族のためのサポート)",
+        referencesTitle: "参考資料と関連情報",
+        link1: "厚生労働省: 薬物乱用対策",
+        link2: "国立精神・神経医療研究センター",
+        link3: "ダルク (DARC) - 薬物依存症回復施設",
+        link4: "ナルコティクス・アノニマス日本",
+        link5: "WHO: 薬物乱用情報",
+        tagsTitle: "関連トピック",
+        tag1: "薬物依存症",
+        tag2: "回復プログラム",
+        tag3: "再発防止",
+        tag4: "予防教育",
+        tag5: "デトックス",
+        tag6: "カウンセリング",
+        tag7: "自助グループ",
+        tag8: "家族サポート",
+        tag9: "違法薬物",
+        tag10: "処方薬乱用",
+        tag11: "脳への影響",
+        tag12: "身体的影響",
+        tag13: "精神的影響",
+        tag14: "社会的影響",
+        tag15: "危険な状況",
+        tag16: "オンライン安全",
+        tag17: "緊急対応",
+        tag18: "相談窓口",
+        tag19: "治療施設",
+        tag20: "回復ストーリー",
+        footerText: "© 2025 薬物依存症予防教育リソース | 作成者: Mishchenko Sergey",
+        footerNote: "このサイトは教育目的で作成されており、医療アドバイスを提供するものではありません。問題がある場合は専門家に相談してください。",
+        settingsTitle: "設定",
+        langTitle: "言語設定",
+        themeTitle: "テーマ",
+        themeLightText: "ライト",
+        themeDarkText: "ダーク",
+        themeBlueText: "ブルー"
+      },
+      en: {
+        mainTitle: "Drug Addiction and Prevention",
+        mainSubtitle: "Learn about the dangers of drugs, recovery from addiction, and prevention strategies",
+        card1Title: "What are Drugs?",
+        card1Text1: "Drugs are chemical substances that temporarily alter sensations or consciousness by affecting the brain and body. There are various types including prescription drugs, over-the-counter medications, and illegal substances, but illegal drugs cause serious harm to health and society and must never be used.",
+        card1Subtitle1: "Main Types of Illegal Drugs",
+        drug1: "Stimulants",
+        drug1Desc: "Highly addictive substances that excite the central nervous system",
+        drug2: "Marijuana",
+        drug2Desc: "Reduces cognitive ability and increases risk of mental disorders",
+        drug3: "MDMA (Ecstasy)",
+        drug3Desc: "Causes hallucinations and dehydration",
+        drug4: "Heroin",
+        drug4Desc: "Opioid with strong addictive properties and withdrawal symptoms",
+        drug5: "Cocaine",
+        drug5Desc: "High risk of heart attack and mental disorders",
+        card1Text2: "Drug use often starts with \"just once\" but frequently develops into addiction. Addiction is not a weakness of will but a disease caused by changes in brain function.",
+        card2Title: "Effects and Dangers of Drugs",
+        card2Subtitle1: "Physical Effects",
+        effect1: "Destruction of brain cells and cognitive decline",
+        effect2: "Increased risk of heart attack and arrhythmia",
+        effect3: "Liver and kidney dysfunction",
+        effect4: "Weakened immune system",
+        effect5: "Malnutrition and weight loss",
+        card2Subtitle2: "Psychological Effects",
+        effect6: "Hallucinations, delusions, paranoia",
+        effect7: "Development of depression and anxiety disorders",
+        effect8: "Decline in cognitive function and judgment",
+        effect9: "Increased suicidal thoughts",
+        effect10: "Personality changes and social dysfunction",
+        card2Subtitle3: "Social Effects",
+        effect11: "Breakdown of family relationships",
+        effect12: "Unemployment and financial hardship",
+        effect13: "Involvement in criminal activities",
+        effect14: "Legal problems (arrest, imprisonment)",
+        effect15: "Loss of social credibility",
+        card3Title: "Overcoming Addiction",
+        card3Subtitle1: "Recovery Steps",
+        step1: "Problem Recognition",
+        step1Desc: "Admitting that one has an addiction",
+        step2: "Professional Help",
+        step2Desc: "Consulting doctors and counselors",
+        step3: "Detox",
+        step3Desc: "Medical detoxification program under supervision",
+        step4: "Rehabilitation",
+        step4Desc: "Treatment program at specialized facilities",
+        step5: "Support Groups",
+        step5Desc: "Participating in groups like NA (Narcotics Anonymous)",
+        step6: "Relapse Prevention",
+        step6Desc: "Stress management and healthy alternative activities",
+        card3Subtitle2: "Support for Families",
+        support1: "Understand addiction without blaming",
+        support2: "Encourage consultation with professionals",
+        support3: "Set boundaries without codependency",
+        support4: "Participate in family support groups",
+        support5: "Provide continuous support even after relapse",
+        card3Text: "Recovery takes time, but with proper support, it is possible to overcome addiction. Don't struggle alone, always seek professional help.",
+        card4Title: "Preventing Drug Use",
+        card4Subtitle1: "Prevention Strategies",
+        prevention1: "Acquire accurate knowledge about drug dangers",
+        prevention2: "Develop healthy ways to cope with stress",
+        prevention3: "Build courage and skills to say \"NO\"",
+        prevention4: "Establish healthy friendships",
+        prevention5: "Set goals and participate in fulfilling activities",
+        card4Subtitle2: "Avoid Dangerous Situations",
+        avoid1: "Avoid places and gatherings where drugs might be used",
+        avoid2: "Cut ties with drug users",
+        avoid3: "Avoid making decisions under the influence of alcohol or drugs",
+        avoid4: "Be cautious of invitations from strangers on social media",
+        card4Subtitle3: "Warning Signs of Dangerous Thinking",
+        warning1: "\"Just once won't hurt\"",
+        warning2: "\"I won't get addicted\"",
+        warning3: "\"I need this to relieve stress\"",
+        warning4: "\"Everyone else is doing it\"",
+        card5Title: "Avoiding Accidental Drug Use",
+        card5Subtitle1: "Online Safety Measures",
+        online1: "Don't buy medications from untrustworthy sites",
+        online2: "Be wary of products labeled as \"legal herbs\"",
+        online3: "Personal imports from overseas are particularly dangerous",
+        online4: "Avoid supplements without ingredient labels",
+        online5: "Don't enter credit card information carelessly",
+        card5Subtitle2: "Food and Drink Safety",
+        food1: "Don't accept drinks from strangers",
+        food2: "Don't drink from unattended beverages",
+        food3: "Be cautious of drinks served in open containers",
+        food4: "Avoid food taken from common bowls at parties",
+        card5Subtitle3: "If You Feel in Danger",
+        action1: "Leave the location immediately",
+        action2: "Contact a trusted friend",
+        action3: "Call 110 (police) or 119 (ambulance)",
+        action4: "Seek medical help immediately if you feel unwell",
+        action5: "Report to police afterward",
+        quizTitle: "Drug Knowledge Quiz",
+        quizDescription: "Test your knowledge about drug addiction and prevention! Answer the quiz below to check your understanding.",
+        q1Text: "1. What is the first step to recovery from drug addiction?",
+        q1Option1: "Problem recognition and self-awareness of addiction",
+        q1Option2: "Attempting treatment by oneself",
+        q1Option3: "Changing residence",
+        q1Option4: "Changing all friends",
+        q2Text: "2. What precautions should you take to avoid accidental drug consumption? (Multiple choices)",
+        q2Option1: "Don't drink unattended beverages",
+        q2Option2: "Don't buy medications from untrustworthy websites",
+        q2Option3: "Avoid supplements without ingredient labels",
+        q2Option4: "Don't accept food or drink from strangers",
+        q3Text: "3. What is an effective way to prevent drug use?",
+        q3Option1: "Learn about drug dangers and develop refusal skills",
+        q3Option2: "Try once to experience its dangers",
+        q3Option3: "Only associate with friends who use drugs",
+        q3Option4: "Overestimate self-management abilities",
+        q4Text: "4. What approaches are effective in treating drug addiction? (Multiple choices)",
+        q4Option1: "Medically supervised detox programs",
+        q4Option2: "Counseling such as cognitive behavioral therapy",
+        q4Option3: "Support groups like NA (Narcotics Anonymous)",
+        q4Option4: "Developing relapse prevention plans",
+        q5Text: "5. What mental problems can drugs cause?",
+        q5Option1: "All: hallucinations, delusions, depression, anxiety disorders",
+        q5Option2: "Hallucinations only",
+        q5Option3: "Only physical symptoms",
+        q5Option4: "Only temporary mood changes",
+        prevBtnText: "Previous Question",
+        nextBtnText: "Next Question",
+        submitBtnText: "Check Results",
+        resultTitle: "Quiz Results Details",
+        resultQ1: "Question 1: What is the first step to recovery from drug addiction?",
+        resultAnswer1: "Your answer:",
+        resultCorrect1: "Correct: Problem recognition and self-awareness of addiction",
+        resultExp1: "Explanation:",
+        resultExp1Text: "The first step to recovery is admitting that one has an addiction. Denial is a characteristic of addiction, and treatment cannot begin without clearing this step.",
+        resultQ2: "Question 2: What precautions should you take to avoid accidental drug consumption?",
+        resultAnswer2: "Your answer:",
+        resultCorrect2: "Correct: Don't drink unattended beverages, Don't buy medications from untrustworthy websites, Avoid supplements without ingredient labels, Don't accept food or drink from strangers",
+        resultExp2: "Explanation:",
+        resultExp2Text: "All these measures reduce the risk of accidentally consuming drugs. It's especially important not to leave drinks unattended at parties.",
+        resultQ3: "Question 3: What is an effective way to prevent drug use?",
+        resultAnswer3: "Your answer:",
+        resultCorrect3: "Correct: Learn about drug dangers and develop refusal skills",
+        resultExp3: "Explanation:",
+        resultExp3Text: "Knowledge and skills are essential for prevention. Understanding the dangers of drugs and developing the ability to say \"NO\" when offered is the most effective approach.",
+        resultQ4: "Question 4: What approaches are effective in treating drug addiction?",
+        resultAnswer4: "Your answer:",
+        resultCorrect4: "Correct: Medically supervised detox programs, Counseling such as cognitive behavioral therapy, Support groups like NA, Developing relapse prevention plans",
+        resultExp4: "Explanation:",
+        resultExp4Text: "Addiction treatment requires a multifaceted approach. Beyond treating physical dependence, psychological support, social assistance, and relapse prevention plans are essential for effective treatment.",
+        resultQ5: "Question 5: What mental problems can drugs cause?",
+        resultAnswer5: "Your answer:",
+        resultCorrect5: "Correct: All: hallucinations, delusions, depression, anxiety disorders",
+        resultExp5: "Explanation:",
+        resultExp5Text: "Drugs cause various mental problems. From temporary hallucinations to long-term depression and anxiety disorders, they increase the risk of numerous mental illnesses.",
+        restartBtn: "Restart Quiz",
+        supportTitle: "Support and Resources",
+        emergencyTitle: "Emergency Contacts",
+        police: "Police",
+        ambulance: "Ambulance",
+        hotline: "Drug Addiction Hotline",
+        suicide: "Suicide Prevention Hotline",
+        treatmentTitle: "Treatment Facilities",
+        facility1: "National Center of Neurology and Psychiatry",
+        facility2: "Regional Mental Health and Welfare Centers",
+        facility3: "Private Addiction Treatment Centers",
+        facility4: "University Hospital Psychiatry Departments",
+        groupTitle: "Support Groups",
+        group1: "Narcotics Anonymous (NA)",
+        group2: "DARC - Drug Addiction Rehabilitation Center",
+        group3: "Family Support Groups",
+        referencesTitle: "References and Resources",
+        link1: "MHLW: Drug Abuse Countermeasures",
+        link2: "National Center of Neurology and Psychiatry",
+        link3: "DARC - Drug Addiction Rehabilitation Center",
+        link4: "Narcotics Anonymous Japan",
+        link5: "WHO: Drug Abuse Information",
+        tagsTitle: "Related Topics",
+        tag1: "Drug Addiction",
+        tag2: "Recovery Programs",
+        tag3: "Relapse Prevention",
+        tag4: "Prevention Education",
+        tag5: "Detox",
+        tag6: "Counseling",
+        tag7: "Support Groups",
+        tag8: "Family Support",
+        tag9: "Illegal Drugs",
+        tag10: "Prescription Drug Abuse",
+        tag11: "Brain Effects",
+        tag12: "Physical Effects",
+        tag13: "Psychological Effects",
+        tag14: "Social Effects",
+        tag15: "Dangerous Situations",
+        tag16: "Online Safety",
+        tag17: "Emergency Response",
+        tag18: "Consultation Services",
+        tag19: "Treatment Facilities",
+        tag20: "Recovery Stories",
+        footerText: "MIT License | Drug Addiction Prevention Resources | Author GitHub https://github.com/serbekun/serbekun",
+        footerNote: "This site is for educational purposes only and does not provide medical advice. Please consult a professional if you have any problems.",
+        settingsTitle: "Settings",
+        langTitle: "Language Settings",
+        themeTitle: "Theme",
+        themeLightText: "Light",
+        themeDarkText: "Dark",
+        themeBlueText: "Blue"
+      }
+    };
+
+    // Set language function
+    function setLanguage(lang) {
+      // Update HTML lang attribute
+      document.documentElement.lang = lang;
+      
+      // Get all translatable elements
+      const elements = document.querySelectorAll('[id]');
+      
+      // Update content for each element
+      elements.forEach(element => {
+        const key = element.id;
+        if (translations[lang][key]) {
+          element.textContent = translations[lang][key];
+        }
+      });
+      
+      // Update active button
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      document.getElementById(`lang-${lang}`).classList.add('active');
+      document.getElementById(`panel-${lang}`).classList.add('active');
+      
+      // Save to localStorage
+      localStorage.setItem('language', lang);
+    }
+
+    // Initialize language
+    function initLanguage() {
+      // Get saved language or system language
+      let lang = localStorage.getItem('language') || 
+                 (navigator.language.startsWith('ja') ? 'ja' : 'en');
+      
+      // Set language
+      setLanguage(lang);
+    }
+
     // Quiz state management
     let currentQuestion = 1;
     const totalQuestions = 5;
@@ -1128,7 +1804,7 @@
       
       // Display results
       document.getElementById("score-percentage").textContent = `${percentage}%`;
-      document.getElementById("score-text").textContent = score;
+      document.getElementById("score-value").textContent = score;
       
       // Hide questions and show results
       document.querySelectorAll('.question').forEach(q => q.style.display = 'none');
@@ -1298,8 +1974,27 @@
       resultEl.classList.remove("show");
     }
     
-    // Initialize counter dots
+    // Theme switching
+    function setTheme(theme) {
+      document.body.className = theme;
+      localStorage.setItem('theme', theme);
+      
+      // Update active button
+      document.querySelectorAll('.theme-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      document.getElementById(`theme-${theme}`).classList.add('active');
+    }
+    
+    // Settings panel
+    function toggleSettings() {
+      document.getElementById('settings-overlay').classList.toggle('active');
+      document.getElementById('settings-panel').classList.toggle('active');
+    }
+
+    // Initialize page
     document.addEventListener('DOMContentLoaded', function() {
+      // Initialize animations
       const cards = document.querySelectorAll('.card');
       
       const observer = new IntersectionObserver((entries) => {
@@ -1327,6 +2022,29 @@
       
       // Update nav buttons on load
       updateNavButtons();
+      
+      // Initialize language
+      initLanguage();
+      
+      // Set up language switchers
+      document.getElementById('lang-ja').addEventListener('click', () => setLanguage('ja'));
+      document.getElementById('lang-en').addEventListener('click', () => setLanguage('en'));
+      document.getElementById('panel-ja').addEventListener('click', () => setLanguage('ja'));
+      document.getElementById('panel-en').addEventListener('click', () => setLanguage('en'));
+      
+      // Initialize theme
+      const savedTheme = localStorage.getItem('theme') || '';
+      if (savedTheme) setTheme(savedTheme);
+      
+      // Set up theme switchers
+      document.getElementById('theme-light').addEventListener('click', () => setTheme(''));
+      document.getElementById('theme-dark').addEventListener('click', () => setTheme('dark-theme'));
+      document.getElementById('theme-blue').addEventListener('click', () => setTheme('blue-theme'));
+      
+      // Settings panel
+      document.getElementById('settings-btn').addEventListener('click', toggleSettings);
+      document.getElementById('close-settings').addEventListener('click', toggleSettings);
+      document.getElementById('settings-overlay').addEventListener('click', toggleSettings);
     });
   </script>
 </body>
