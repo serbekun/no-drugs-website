@@ -1,0 +1,1333 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>薬物依存症と予防 - 教育リソース</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* === CSS Variables === */
+    :root {
+      /* Colors */
+      --clr-primary: #3f51b5;
+      --clr-primary-light: #6573c3;
+      --clr-primary-dark: #303f9f;
+      --clr-secondary: #f50057;
+      --clr-bg: #f4f7fa;
+      --clr-card: #ffffff;
+      --clr-text: #333333;
+      --clr-light: #eef1f6;
+      --clr-success: #4caf50;
+      --clr-error: #f44336;
+      --clr-warning: #ff9800;
+      --clr-info: #2196f3;
+      
+      /* Spacing */
+      --spacing-xs: 0.25rem;
+      --spacing-sm: 0.5rem;
+      --spacing-md: 1rem;
+      --spacing-lg: 1.5rem;
+      --spacing-xl: 2rem;
+      
+      /* Typography */
+      --text-sm: 0.875rem;
+      --text-base: 1rem;
+      --text-md: 1.25rem;
+      --text-lg: 1.5rem;
+      --text-xl: 1.8rem;
+      --text-xxl: 2.2rem;
+      
+      /* Borders & Shadows */
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
+      --shadow-md: 0 4px 8px rgba(0,0,0,0.1);
+      --shadow-lg: 0 6px 12px rgba(0,0,0,0.15);
+      
+      /* Transitions */
+      --transition: all 0.3s ease;
+    }
+    
+    /* === Base Styles === */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background-color: var(--clr-bg);
+      color: var(--clr-text);
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    
+    /* === Typography === */
+    h1, h2, h3, h4 {
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: var(--spacing-md);
+    }
+    
+    h1 {
+      font-size: var(--text-xxl);
+    }
+    
+    h2 {
+      font-size: var(--text-xl);
+      color: var(--clr-primary);
+    }
+    
+    h3 {
+      font-size: var(--text-lg);
+      color: var(--clr-primary-dark);
+    }
+    
+    p {
+      margin-bottom: var(--spacing-md);
+    }
+    
+    a {
+      color: var(--clr-primary);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    
+    a:hover {
+      color: var(--clr-primary-dark);
+      text-decoration: underline;
+    }
+    
+    /* === Layout === */
+    .container {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 var(--spacing-md);
+    }
+    
+    header {
+      background: linear-gradient(135deg, var(--clr-primary), var(--clr-primary-dark));
+      color: white;
+      padding: var(--spacing-xl) 0;
+      text-align: center;
+      box-shadow: var(--shadow-md);
+    }
+    
+    .header-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .header-subtitle {
+      font-weight: 300;
+      font-size: var(--text-md);
+      opacity: 0.9;
+      margin-top: var(--spacing-sm);
+    }
+    
+    main {
+      flex: 1;
+      padding: var(--spacing-xl) 0;
+    }
+    
+    .cards-container {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-xl);
+    }
+    
+    footer {
+      background-color: var(--clr-light);
+      text-align: center;
+      padding: var(--spacing-lg) 0;
+      margin-top: auto;
+      font-size: var(--text-sm);
+      box-shadow: 0 -2px 6px rgba(0,0,0,0.05);
+    }
+    
+    /* === Card Styles === */
+    .card {
+      background-color: var(--clr-card);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      padding: var(--spacing-xl);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .card:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-5px);
+    }
+    
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background-color: var(--clr-primary);
+    }
+    
+    .card-title {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+    }
+    
+    .card-title i {
+      color: var(--clr-primary);
+    }
+    
+    .card-img {
+      max-width: 100%;
+      height: auto;
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      margin: var(--spacing-md) 0;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .card-img:hover {
+      transform: scale(1.02);
+      box-shadow: var(--shadow-md);
+    }
+    
+    .img-caption {
+      text-align: center;
+      font-size: var(--text-sm);
+      color: #666;
+      margin-top: var(--spacing-xs);
+      font-style: italic;
+    }
+    
+    /* === Quiz Styles === */
+    .quiz-card {
+      background-color: rgba(63, 81, 181, 0.05);
+    }
+    
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-sm);
+      margin-bottom: var(--spacing-md);
+    }
+    
+    .quiz-option {
+      display: flex;
+      align-items: center;
+      padding: var(--spacing-sm) var(--spacing-md);
+      background-color: white;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: var(--transition);
+      border: 2px solid #e0e0e0;
+    }
+    
+    .quiz-option:hover {
+      background-color: rgba(63, 81, 181, 0.05);
+      border-color: var(--clr-primary-light);
+    }
+    
+    .quiz-option input {
+      margin-right: var(--spacing-sm);
+      cursor: pointer;
+    }
+    
+    .btn {
+      display: inline-block;
+      background-color: var(--clr-primary);
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius-sm);
+      font-weight: 500;
+      font-size: var(--text-base);
+      cursor: pointer;
+      transition: var(--transition);
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+    }
+    
+    .btn:hover {
+      background-color: var(--clr-primary-dark);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+    }
+    
+    .btn:active {
+      transform: translateY(0);
+    }
+    
+    .btn-block {
+      display: block;
+      width: 100%;
+    }
+    
+    .btn-secondary {
+      background-color: var(--clr-secondary);
+    }
+    
+    .btn-secondary:hover {
+      background-color: #d5004f;
+    }
+    
+    .btn-outline {
+      background-color: transparent;
+      border: 2px solid var(--clr-primary);
+      color: var(--clr-primary);
+    }
+    
+    .btn-outline:hover {
+      background-color: rgba(63, 81, 181, 0.1);
+    }
+    
+    .quiz-result {
+      margin-top: var(--spacing-md);
+      padding: var(--spacing-md);
+      border-radius: var(--radius-sm);
+      font-weight: 500;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: var(--transition);
+    }
+    
+    .quiz-result.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .quiz-result.success {
+      background-color: rgba(76, 175, 80, 0.1);
+      color: var(--clr-success);
+      border-left: 4px solid var(--clr-success);
+    }
+    
+    .quiz-result.error {
+      background-color: rgba(244, 67, 54, 0.1);
+      color: var(--clr-error);
+      border-left: 4px solid var(--clr-error);
+    }
+    
+    .quiz-result.warning {
+      background-color: rgba(255, 152, 0, 0.1);
+      color: var(--clr-warning);
+      border-left: 4px solid var(--clr-warning);
+    }
+    
+    .quiz-result.info {
+      background-color: rgba(33, 150, 243, 0.1);
+      color: var(--clr-info);
+      border-left: 4px solid var(--clr-info);
+    }
+    
+    /* === Quiz Navigation === */
+    .quiz-nav {
+      display: flex;
+      justify-content: space-between;
+      margin-top: var(--spacing-md);
+    }
+    
+    .quiz-counter {
+      display: flex;
+      justify-content: center;
+      gap: var(--spacing-xs);
+      margin: var(--spacing-md) 0;
+    }
+    
+    .counter-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: #e0e0e0;
+      transition: var(--transition);
+    }
+    
+    .counter-dot.active {
+      background-color: var(--clr-primary);
+      transform: scale(1.2);
+    }
+    
+    .counter-dot.answered {
+      background-color: var(--clr-success);
+    }
+    
+    /* === Results Section === */
+    .results-summary {
+      background-color: rgba(63, 81, 181, 0.05);
+      border-radius: var(--radius-md);
+      padding: var(--spacing-lg);
+      margin: var(--spacing-lg) 0;
+    }
+    
+    .result-item {
+      padding: var(--spacing-md);
+      margin-bottom: var(--spacing-sm);
+      border-radius: var(--radius-sm);
+      border-left: 4px solid #e0e0e0;
+    }
+    
+    .result-item.correct {
+      border-left-color: var(--clr-success);
+      background-color: rgba(76, 175, 80, 0.05);
+    }
+    
+    .result-item.incorrect {
+      border-left-color: var(--clr-error);
+      background-color: rgba(244, 67, 54, 0.05);
+    }
+    
+    .result-item h4 {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+    }
+    
+    .result-item .explanation {
+      margin-top: var(--spacing-sm);
+      padding: var(--spacing-sm);
+      background-color: rgba(0,0,0,0.03);
+      border-radius: var(--radius-sm);
+    }
+    
+    .score-display {
+      font-size: var(--text-xl);
+      font-weight: bold;
+      text-align: center;
+      margin: var(--spacing-lg) 0;
+    }
+    
+    .score-percentage {
+      font-size: 3rem;
+      color: var(--clr-primary);
+      line-height: 1;
+      margin-bottom: var(--spacing-sm);
+    }
+    
+    /* === Links Card === */
+    .links-card {
+      background-color: rgba(101, 115, 195, 0.05);
+    }
+    
+    .links-list {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .links-list li {
+      padding: var(--spacing-sm) 0;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+    }
+    
+    .links-list li:last-child {
+      border-bottom: none;
+    }
+    
+    /* === Warning Box === */
+    .warning-box {
+      background-color: rgba(255, 152, 0, 0.1);
+      border-left: 4px solid var(--clr-warning);
+      padding: var(--spacing-md);
+      border-radius: var(--radius-sm);
+      margin: var(--spacing-md) 0;
+    }
+    
+    .info-box {
+      background-color: rgba(33, 150, 243, 0.1);
+      border-left: 4px solid var(--clr-info);
+      padding: var(--spacing-md);
+      border-radius: var(--radius-sm);
+      margin: var(--spacing-md) 0;
+    }
+    
+    .success-box {
+      background-color: rgba(76, 175, 80, 0.1);
+      border-left: 4px solid var(--clr-success);
+      padding: var(--spacing-md);
+      border-radius: var(--radius-sm);
+      margin: var(--spacing-md) 0;
+    }
+    
+    /* === Animations === */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .animate-in {
+      animation: fadeIn 0.5s ease forwards;
+    }
+    
+    .card:nth-child(1) { animation-delay: 0.1s; }
+    .card:nth-child(2) { animation-delay: 0.2s; }
+    .card:nth-child(3) { animation-delay: 0.3s; }
+    .card:nth-child(4) { animation-delay: 0.4s; }
+    .card:nth-child(5) { animation-delay: 0.5s; }
+    .card:nth-child(6) { animation-delay: 0.6s; }
+    .card:nth-child(7) { animation-delay: 0.7s; }
+    .card:nth-child(8) { animation-delay: 0.8s; }
+    
+    /* === Responsive Design === */
+    @media (max-width: 768px) {
+      :root {
+        --text-xxl: 1.8rem;
+        --text-xl: 1.5rem;
+        --text-lg: 1.3rem;
+        --spacing-xl: 1.5rem;
+      }
+      
+      .card {
+        padding: var(--spacing-lg);
+      }
+      
+      .quiz-nav {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+      }
+    }
+    
+    /* === Tag Styles === */
+    .tags-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--spacing-sm);
+      margin-top: var(--spacing-md);
+    }
+    
+    .tag {
+      background-color: var(--clr-primary-light);
+      color: white;
+      padding: var(--spacing-xs) var(--spacing-sm);
+      border-radius: var(--radius-sm);
+      font-size: var(--text-sm);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <h1><i class="fas fa-ban"></i> 薬物依存症と予防</h1>
+      <p class="header-subtitle">薬物の危険性、依存症からの回復、予防策について学ぶ</p>
+    </div>
+  </header>
+  
+  <main>
+    <div class="container">
+      <div class="cards-container">
+        <!-- Card 1: What are drugs -->
+        <div class="card animate-in">
+          <div class="card-title">
+            <i class="fas fa-pills"></i>
+            <h2>薬物とは？</h2>
+          </div>
+          <p>
+            薬物とは、脳や身体に作用して一時的に感覚や意識を変化させる化学物質です。
+            処方薬、市販薬、そして違法薬物など様々な種類がありますが、
+            違法薬物は健康や社会に深刻な悪影響を及ぼすため、絶対に使用してはいけません。
+          </p>
+          
+          <div class="warning-box">
+            <h3><i class="fas fa-exclamation-triangle"></i> 主な違法薬物の種類</h3>
+            <ul style="margin-left: 1.5rem;">
+              <li><strong>覚せい剤</strong>: 中枢神経を興奮させ、依存性が極めて高い</li>
+              <li><strong>大麻</strong>: 思考能力を低下させ、精神障害のリスクを高める</li>
+              <li><strong>MDMA（エクスタシー）</strong>: 幻覚や脱水症状を引き起こす</li>
+              <li><strong>ヘロイン</strong>: 強い依存性と禁断症状を持つオピオイド</li>
+              <li><strong>コカイン</strong>: 心臓発作や精神障害のリスクが高い</li>
+            </ul>
+          </div>
+          
+          <p>
+            薬物の使用は最初は「一度だけ」と思っても、多くの場合依存症に発展します。
+            依存症は意志の弱さではなく、脳の機能変化による病気です。
+          </p>
+        </div>
+        
+        <!-- Card 2: Effects of drugs -->
+        <div class="card animate-in">
+          <div class="card-title">
+            <i class="fas fa-heartbeat"></i>
+            <h2>薬物の影響と危険性</h2>
+          </div>
+          
+          <div class="info-box">
+            <h3><i class="fas fa-brain"></i> 身体への影響</h3>
+            <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+              <li>脳細胞の破壊と認知機能の低下</li>
+              <li>心臓発作や不整脈のリスク増加</li>
+              <li>肝臓・腎臓機能の障害</li>
+              <li>免疫システムの弱体化</li>
+              <li>栄養失調と体重減少</li>
+            </ul>
+          </div>
+          
+          <div class="warning-box">
+            <h3><i class="fas fa-exclamation-triangle"></i> 精神への影響</h3>
+            <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+              <li>幻覚・妄想・パラノイア</li>
+              <li>うつ病や不安障害の発症</li>
+              <li>認知機能の低下と判断力の欠如</li>
+              <li>自殺念慮の増加</li>
+              <li>人格変化と社会的機能の低下</li>
+            </ul>
+          </div>
+          
+          <div class="info-box">
+            <h3><i class="fas fa-users"></i> 社会的影響</h3>
+            <ul style="margin-left: 1.5rem;">
+              <li>家族関係の崩壊</li>
+              <li>失業と経済的困窮</li>
+              <li>犯罪行為への関与</li>
+              <li>法的問題（逮捕・収監）</li>
+              <li>社会的信用の喪失</li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- Card 3: Overcoming addiction -->
+        <div class="card animate-in">
+          <div class="card-title">
+            <i class="fas fa-hands-helping"></i>
+            <h2>依存症から抜け出す方法</h2>
+          </div>
+          
+          <div class="success-box">
+            <h3><i class="fas fa-check-circle"></i> 回復へのステップ</h3>
+            <ol style="margin-left: 1.5rem; margin-bottom: 1rem;">
+              <li><strong>問題の認識</strong>: 自分が依存症であることを認める</li>
+              <li><strong>専門家の支援</strong>: 医師やカウンセラーに相談する</li>
+              <li><strong>デトックス</strong>: 医療監視下での解毒プログラム</li>
+              <li><strong>リハビリテーション</strong>: 専門施設での治療プログラム</li>
+              <li><strong>自助グループ</strong>: NA（ナルコティクス・アノニマス）などの参加</li>
+              <li><strong>再発防止</strong>: ストレス管理と健康的な代替活動</li>
+            </ol>
+          </div>
+          
+          <div class="info-box">
+            <h3><i class="fas fa-hands-helping"></i> 家族ができるサポート</h3>
+            <ul style="margin-left: 1.5rem;">
+              <li>非難せずに依存症を理解する</li>
+              <li>専門家への相談を勧める</li>
+              <li>共依存にならない境界線を設定</li>
+              <li>家族自身のサポートグループ参加</li>
+              <li>再発しても諦めず継続的サポート</li>
+            </ul>
+          </div>
+          
+          <p>
+            回復には時間がかかりますが、適切な支援があれば依存症から抜け出すことは可能です。
+            一人で悩まず、必ず専門家の助けを求めましょう。
+          </p>
+        </div>
+        
+        <!-- Card 4: Prevention -->
+        <div class="card animate-in">
+          <div class="card-title">
+            <i class="fas fa-shield-alt"></i>
+            <h2>薬物使用を始めないために</h2>
+          </div>
+          
+          <div class="success-box">
+            <h3><i class="fas fa-ban"></i> 予防策</h3>
+            <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+              <li>薬物の危険性について正確な知識を持つ</li>
+              <li>ストレスに対処する健康的な方法を身につける</li>
+              <li>「NO」と言う勇気とスキルを養う</li>
+              <li>健全な友人関係を築く</li>
+              <li>目標を持ち、達成感を得られる活動に参加する</li>
+            </ul>
+          </div>
+          
+          <div class="info-box">
+            <h3><i class="fas fa-user-friends"></i> 危険な状況を避ける</h3>
+            <ul style="margin-left: 1.5rem;">
+              <li>薬物が使われそうな場所・集まりを避ける</li>
+              <li>薬物使用者との関わりを断つ</li>
+              <li>アルコールや他の薬物の影響下で判断しない</li>
+              <li>SNSで知らない人からの誘いに注意</li>
+            </ul>
+          </div>
+          
+          <div class="warning-box">
+            <h3><i class="fas fa-exclamation-circle"></i> 危険な考え方のサイン</h3>
+            <ul style="margin-left: 1.5rem;">
+              <li>「一度だけなら大丈夫」</li>
+              <li>「自分は依存症にならない」</li>
+              <li>「ストレス解消に必要」</li>
+              <li>「みんなやっているから」</li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- Card 5: Accident prevention -->
+        <div class="card animate-in">
+          <div class="card-title">
+            <i class="fas fa-exclamation-triangle"></i>
+            <h2>薬物を誤って購入・使用しないために</h2>
+          </div>
+          
+          <div class="info-box">
+            <h3><i class="fas fa-shopping-cart"></i> オンラインでの安全対策</h3>
+            <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+              <li>信頼できないサイトから薬品を購入しない</li>
+              <li>「合法ハーブ」などと称する製品に注意</li>
+              <li>海外からの個人輸入は特に危険</li>
+              <li>成分表示のないサプリメントは避ける</li>
+              <li>クレジットカード情報を安易に入力しない</li>
+            </ul>
+          </div>
+          
+          <div class="warning-box">
+            <h3><i class="fas fa-cocktail"></i> 飲み物・食べ物の安全確保</h3>
+            <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+              <li>見知らぬ人からの飲み物を受け取らない</li>
+              <li>目を離した飲み物は飲まない</li>
+              <li>封を開けた状態で提供される飲み物に注意</li>
+              <li>パーティーなどで共通のボウルから取った食べ物は避ける</li>
+            </ul>
+          </div>
+          
+          <div class="success-box">
+            <h3><i class="fas fa-first-aid"></i> もし危険を感じたら</h3>
+            <ul style="margin-left: 1.5rem;">
+              <li>すぐにその場を離れる</li>
+              <li>信頼できる友人に連絡する</li>
+              <li>110番（警察）や救急車を呼ぶ</li>
+              <li>異変を感じたら迷わず医療機関を受診</li>
+              <li>後日、警察に通報する</li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- Card 6: Quiz -->
+        <div class="card quiz-card animate-in">
+          <div class="card-title">
+            <i class="fas fa-question"></i>
+            <h2>薬物知識クイズ</h2>
+          </div>
+          <p>薬物依存症と予防に関する知識をテストしましょう！以下のクイズに答えて理解度を確認してください。</p>
+          
+          <div class="quiz-counter">
+            <div class="counter-dot active" id="dot-1"></div>
+            <div class="counter-dot" id="dot-2"></div>
+            <div class="counter-dot" id="dot-3"></div>
+            <div class="counter-dot" id="dot-4"></div>
+            <div class="counter-dot" id="dot-5"></div>
+          </div>
+          
+          <!-- Question 1 -->
+          <div class="question current" id="question-1">
+            <h3>1. 薬物依存症から回復するための最初のステップは？</h3>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q1" value="問題の認識">
+                問題の認識と依存症の自覚
+              </label>
+              
+              <label class="quiz-option">
+                <input type="radio" name="q1" value="自己治療">
+                自分だけで治療を試みる
+              </label>
+              
+              <label class="quiz-option">
+                <input type="radio" name="q1" value="環境変更">
+                住む場所を変える
+              </label>
+              
+              <label class="quiz-option">
+                <input type="radio" name="q1" value="友人変更">
+                友人を全員変える
+              </label>
+            </div>
+          </div>
+          
+          <!-- Question 2 -->
+          <div class="question" id="question-2" style="display: none;">
+            <h3>2. 薬物を誤って摂取しないために注意すべきことは？（複数選択可）</h3>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="checkbox" name="q2" value="飲み物管理">
+                目を離した飲み物を飲まない
+              </label>
+              
+              <label class="quiz-option">
+                <input type="checkbox" name="q2" value="信頼できないサイト">
+                信頼できないサイトから薬品を購入しない
+              </label>
+              
+              <label class="quiz-option">
+                <input type="checkbox" name="q2" value="成分表示">
+                成分表示のないサプリメントを避ける
+              </label>
+              
+              <label class="quiz-option">
+                <input type="checkbox" name="q2" value="見知らぬ人">
+                見知らぬ人からの飲食物を受け取らない
+              </label>
+            </div>
+          </div>
+          
+          <!-- Question 3 -->
+          <div class="question" id="question-3" style="display: none;">
+            <h3>3. 薬物使用を予防する効果的な方法は？</h3>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q3" value="知識とスキル">
+                薬物の危険性について学び、断るスキルを身につける
+              </label>
+              
+              <label class="quiz-option">
+                <input type="radio" name="q3" value="体験">
+                一度試してその危険性を実感する
+              </label>
+              
+              <label class="quiz-option">
+                <input type="radio" name="q3" value="友人選択">
+                薬物を使用している友人とだけ付き合う
+              </label>
+              
+              <label class="quiz-option">
+                <input type="radio" name="q3" value="自己管理">
+                自己管理能力を過信する
+              </label>
+            </div>
+          </div>
+          
+          <!-- Question 4 -->
+          <div class="question" id="question-4" style="display: none;">
+            <h3>4. 薬物依存症の治療に有効なアプローチは？（複数選択可）</h3>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="checkbox" name="q4" value="医療デトックス">
+                医療監視下での解毒プログラム
+              </label>
+              
+              <label class="quiz-option">
+                <input type="checkbox" name="q4" value="カウンセリング">
+                認知行動療法などのカウンセリング
+              </label>
+              
+              <label class="quiz-option">
+                <input type="checkbox" name="q4" value="自助グループ">
+                NA（ナルコティクス・アノニマス）などの自助グループ
+              </label>
+              
+              <label class="quiz-option">
+                <input type="checkbox" name="q4" value="再発防止">
+                再発防止計画の策定
+              </label>
+            </div>
+          </div>
+          
+          <!-- Question 5 -->
+          <div class="question" id="question-5" style="display: none;">
+            <h3>5. 薬物の影響で起こりうる精神的な問題は？</h3>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q5" value="すべて">
+                幻覚、妄想、うつ病、不安障害などすべて
+              </label>
+              
+              <label class="quiz-option">
+                <input type="radio" name="q5" value="幻覚のみ">
+                幻覚のみ
+              </label>
+              
+              <label class="quiz-option">
+                <input type="radio" name="q5" value="身体症状">
+                身体的な症状のみ
+              </label>
+              
+              <label class="quiz-option">
+                <input type="radio" name="q5" value="一時的">
+                一時的な気分の変化のみ
+              </label>
+            </div>
+          </div>
+          
+          <!-- Results Section -->
+          <div class="results-container" id="results-container" style="display: none;">
+            <div class="score-display">
+              <div class="score-percentage" id="score-percentage">0%</div>
+              <p>あなたのスコア: <span id="score-text">0</span>/5</p>
+            </div>
+            
+            <div class="results-summary">
+              <h3><i class="fas fa-clipboard-check"></i> クイズ結果の詳細</h3>
+              
+              <div class="result-item" id="result-1">
+                <h4><i class="fas fa-question-circle"></i> 質問1: 薬物依存症から回復するための最初のステップは？</h4>
+                <p>あなたの回答: <span class="user-answer"></span></p>
+                <p>正解: 問題の認識と依存症の自覚</p>
+                <div class="explanation">
+                  <p><strong>解説:</strong> 回復の第一歩は自分が依存症であることを認めることです。否認は依存症の特徴でもあり、このステップをクリアしなければ治療は始まりません。</p>
+                </div>
+              </div>
+              
+              <div class="result-item" id="result-2">
+                <h4><i class="fas fa-question-circle"></i> 質問2: 薬物を誤って摂取しないために注意すべきことは？</h4>
+                <p>あなたの回答: <span class="user-answer"></span></p>
+                <p>正解: 目を離した飲み物を飲まない, 信頼できないサイトから薬品を購入しない, 成分表示のないサプリメントを避ける, 見知らぬ人からの飲食物を受け取らない</p>
+                <div class="explanation">
+                  <p><strong>解説:</strong> これらのすべての対策が、意図せず薬物を摂取してしまうリスクを減らします。特にパーティーなどでは飲み物から目を離さないことが重要です。</p>
+                </div>
+              </div>
+              
+              <div class="result-item" id="result-3">
+                <h4><i class="fas fa-question-circle"></i> 質問3: 薬物使用を予防する効果的な方法は？</h4>
+                <p>あなたの回答: <span class="user-answer"></span></p>
+                <p>正解: 薬物の危険性について学び、断るスキルを身につける</p>
+                <div class="explanation">
+                  <p><strong>解説:</strong> 予防には知識とスキルが不可欠です。薬物の危険性を理解し、実際に誘われた時に「NO」と言える技術を身につけることが最も効果的です。</p>
+                </div>
+              </div>
+              
+              <div class="result-item" id="result-4">
+                <h4><i class="fas fa-question-circle"></i> 質問4: 薬物依存症の治療に有効なアプローチは？</h4>
+                <p>あなたの回答: <span class="user-answer"></span></p>
+                <p>正解: 医療監視下での解毒プログラム, 認知行動療法などのカウンセリング, NAなどの自助グループ, 再発防止計画の策定</p>
+                <div class="explanation">
+                  <p><strong>解説:</strong> 依存症治療は多面的なアプローチが必要です。身体的依存の治療だけでなく、心理的サポート、社会的支援、再発予防計画など包括的な対応が効果的です。</p>
+                </div>
+              </div>
+              
+              <div class="result-item" id="result-5">
+                <h4><i class="fas fa-question-circle"></i> 質問5: 薬物の影響で起こりうる精神的な問題は？</h4>
+                <p>あなたの回答: <span class="user-answer"></span></p>
+                <p>正解: 幻覚、妄想、うつ病、不安障害などすべて</p>
+                <div class="explanation">
+                  <p><strong>解説:</strong> 薬物は多様な精神的な問題を引き起こします。一時的な幻覚から、長期的なうつ病や不安障害まで、様々な精神疾患のリスクを高めます。</p>
+                </div>
+              </div>
+            </div>
+            
+            <button class="btn btn-block" onclick="restartQuiz()">
+              <i class="fas fa-redo"></i> クイズをやり直す
+            </button>
+          </div>
+          
+          <div class="quiz-nav">
+            <button class="btn btn-outline" id="prev-btn" style="display: none;" onclick="prevQuestion()">
+              <i class="fas fa-arrow-left"></i> 前の質問
+            </button>
+            <button class="btn" id="next-btn" onclick="nextQuestion()">
+              次の質問 <i class="fas fa-arrow-right"></i>
+            </button>
+            <button class="btn btn-secondary" id="submit-btn" style="display: none;" onclick="submitQuiz()">
+              <i class="fas fa-paper-plane"></i> 結果を確認
+            </button>
+          </div>
+          
+          <div id="result" class="quiz-result"></div>
+        </div>
+        
+        <!-- Card 7: Support and Resources -->
+        <div class="card animate-in">
+          <div class="card-title">
+            <i class="fas fa-hands-helping"></i>
+            <h2>支援と相談窓口</h2>
+          </div>
+          
+          <div class="info-box">
+            <h3><i class="fas fa-phone-alt"></i> 緊急連絡先</h3>
+            <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+              <li><strong>警察</strong>: 110</li>
+              <li><strong>救急車</strong>: 119</li>
+              <li><strong>薬物依存症相談ホットライン</strong>: 0120-555-555</li>
+              <li><strong>自殺予防ホットライン</strong>: 0120-666-666</li>
+            </ul>
+          </div>
+          
+          <div class="success-box">
+            <h3><i class="fas fa-hospital"></i> 治療施設</h3>
+            <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+              <li>国立精神・神経医療研究センター</li>
+              <li>各地域の精神保健福祉センター</li>
+              <li>民間の依存症治療施設</li>
+              <li>大学病院の精神科</li>
+            </ul>
+          </div>
+          
+          <div class="info-box">
+            <h3><i class="fas fa-users"></i> 自助グループ</h3>
+            <ul style="margin-left: 1.5rem;">
+              <li>ナルコティクス・アノニマス (NA)</li>
+              <li>ダルク (DARC) - 薬物依存症回復施設</li>
+              <li>家族の会 (薬物依存症の家族のためのサポート)</li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- Card 8: References -->
+        <div class="card links-card animate-in">
+          <div class="card-title">
+            <i class="fas fa-book"></i>
+            <h2>参考資料と関連情報</h2>
+          </div>
+          <ul class="links-list">
+            <li>
+              <i class="fas fa-external-link-alt"></i>
+              <a href="https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000183317.html" target="_blank">
+                厚生労働省: 薬物乱用対策
+              </a>
+            </li>
+            <li>
+              <i class="fas fa-external-link-alt"></i>
+              <a href="https://www.ncnp.go.jp/" target="_blank">
+                国立精神・神経医療研究センター
+              </a>
+            </li>
+            <li>
+              <i class="fas fa-external-link-alt"></i>
+              <a href="https://www.darc.jp/" target="_blank">
+                ダルク (DARC) - 薬物依存症回復施設
+              </a>
+            </li>
+            <li>
+              <i class="fas fa-external-link-alt"></i>
+              <a href="https://na-japan.org/" target="_blank">
+                ナルコティクス・アノニマス日本
+              </a>
+            </li>
+            <li>
+              <i class="fas fa-external-link-alt"></i>
+              <a href="https://www.who.int/health-topics/drug-abuse" target="_blank">
+                WHO: 薬物乱用情報
+              </a>
+            </li>
+          </ul>
+        </div>
+        
+        <!-- Tags Section -->
+        <div class="card animate-in">
+          <div class="card-title">
+            <i class="fas fa-tags"></i>
+            <h2>関連トピック</h2>
+          </div>
+          <div class="tags-container">
+            <span class="tag">薬物依存症</span>
+            <span class="tag">回復プログラム</span>
+            <span class="tag">再発防止</span>
+            <span class="tag">予防教育</span>
+            <span class="tag">デトックス</span>
+            <span class="tag">カウンセリング</span>
+            <span class="tag">自助グループ</span>
+            <span class="tag">家族サポート</span>
+            <span class="tag">違法薬物</span>
+            <span class="tag">処方薬乱用</span>
+            <span class="tag">脳への影響</span>
+            <span class="tag">身体的影響</span>
+            <span class="tag">精神的影響</span>
+            <span class="tag">社会的影響</span>
+            <span class="tag">危険な状況</span>
+            <span class="tag">オンライン安全</span>
+            <span class="tag">緊急対応</span>
+            <span class="tag">相談窓口</span>
+            <span class="tag">治療施設</span>
+            <span class="tag">回復ストーリー</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+  <footer>
+    <div class="container">
+      <p>© 2025 薬物依存症予防教育リソース | 作成者: Mishchenko Sergey</p>
+      <p style="font-size: 0.8rem; margin-top: 0.5rem; opacity: 0.7;">
+        このサイトは教育目的で作成されており、医療アドバイスを提供するものではありません。問題がある場合は専門家に相談してください。
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // Quiz state management
+    let currentQuestion = 1;
+    const totalQuestions = 5;
+    const answers = {
+      q1: null,
+      q2: [],
+      q3: null,
+      q4: [],
+      q5: null
+    };
+    
+    // Correct answers
+    const correctAnswers = {
+      q1: "問題の認識",
+      q2: ["飲み物管理", "信頼できないサイト", "成分表示", "見知らぬ人"],
+      q3: "知識とスキル",
+      q4: ["医療デトックス", "カウンセリング", "自助グループ", "再発防止"],
+      q5: "すべて"
+    };
+    
+    // Navigation functions
+    function nextQuestion() {
+      // Save current answer
+      saveAnswer(currentQuestion);
+      
+      // Validate current question
+      if (!isQuestionAnswered(currentQuestion)) {
+        showResult("warning", "回答を選択してください");
+        return;
+      }
+      
+      // Hide current question
+      document.getElementById(`question-${currentQuestion}`).style.display = 'none';
+      
+      // Move to next question
+      currentQuestion++;
+      
+      // Show next question or results
+      if (currentQuestion <= totalQuestions) {
+        document.getElementById(`question-${currentQuestion}`).style.display = 'block';
+        updateCounterDots();
+        updateNavButtons();
+        hideResult();
+      } else {
+        submitQuiz();
+      }
+    }
+    
+    function prevQuestion() {
+      // Hide current question
+      document.getElementById(`question-${currentQuestion}`).style.display = 'none';
+      
+      // Move to previous question
+      currentQuestion--;
+      
+      // Show previous question
+      document.getElementById(`question-${currentQuestion}`).style.display = 'block';
+      updateCounterDots();
+      updateNavButtons();
+      hideResult();
+    }
+    
+    function submitQuiz() {
+      // Save last answer
+      saveAnswer(currentQuestion);
+      
+      // Calculate score
+      const score = calculateScore();
+      const percentage = Math.round((score / totalQuestions) * 100);
+      
+      // Display results
+      document.getElementById("score-percentage").textContent = `${percentage}%`;
+      document.getElementById("score-text").textContent = score;
+      
+      // Hide questions and show results
+      document.querySelectorAll('.question').forEach(q => q.style.display = 'none');
+      document.getElementById('results-container').style.display = 'block';
+      document.getElementById('prev-btn').style.display = 'none';
+      document.getElementById('next-btn').style.display = 'none';
+      document.getElementById('submit-btn').style.display = 'none';
+      
+      // Display detailed results
+      displayDetailedResults();
+    }
+    
+    function restartQuiz() {
+      // Reset state
+      currentQuestion = 1;
+      answers.q1 = null;
+      answers.q2 = [];
+      answers.q3 = null;
+      answers.q4 = [];
+      answers.q5 = null;
+      
+      // Reset UI
+      document.getElementById('results-container').style.display = 'none';
+      document.querySelectorAll('.question').forEach(q => q.style.display = 'none');
+      document.getElementById('question-1').style.display = 'block';
+      
+      // Clear selections
+      document.querySelectorAll('input[type="radio"], input[type="checkbox"]').forEach(input => {
+        input.checked = false;
+      });
+      
+      // Reset counter dots
+      document.querySelectorAll('.counter-dot').forEach(dot => {
+        dot.classList.remove('answered');
+      });
+      
+      // Reset nav buttons
+      updateCounterDots();
+      updateNavButtons();
+    }
+    
+    // Helper functions
+    function saveAnswer(questionNum) {
+      const questionId = `q${questionNum}`;
+      
+      if (questionNum === 1 || questionNum === 3 || questionNum === 5) {
+        // Radio button questions
+        const selected = document.querySelector(`input[name="${questionId}"]:checked`);
+        answers[questionId] = selected ? selected.value : null;
+      } else {
+        // Checkbox questions
+        const selected = document.querySelectorAll(`input[name="${questionId}"]:checked`);
+        answers[questionId] = Array.from(selected).map(input => input.value);
+      }
+      
+      // Update counter dot if answered
+      if (isQuestionAnswered(questionNum)) {
+        document.getElementById(`dot-${questionNum}`).classList.add('answered');
+      }
+    }
+    
+    function isQuestionAnswered(questionNum) {
+      const questionId = `q${questionNum}`;
+      
+      if (questionNum === 1 || questionNum === 3 || questionNum === 5) {
+        return answers[questionId] !== null;
+      } else {
+        return answers[questionId].length > 0;
+      }
+    }
+    
+    function calculateScore() {
+      let score = 0;
+      
+      // Question 1
+      if (answers.q1 === correctAnswers.q1) score++;
+      
+      // Question 2 (check if arrays are equal)
+      if (arraysEqual(answers.q2.sort(), correctAnswers.q2.sort())) score++;
+      
+      // Question 3
+      if (answers.q3 === correctAnswers.q3) score++;
+      
+      // Question 4 (check if arrays are equal)
+      if (arraysEqual(answers.q4.sort(), correctAnswers.q4.sort())) score++;
+      
+      // Question 5
+      if (answers.q5 === correctAnswers.q5) score++;
+      
+      return score;
+    }
+    
+    function arraysEqual(a, b) {
+      if (a === b) return true;
+      if (a == null || b == null) return false;
+      if (a.length !== b.length) return false;
+      
+      for (let i = 0; i < a.length; i++) {
+        if (a[i] !== b[i]) return false;
+      }
+      
+      return true;
+    }
+    
+    function updateCounterDots() {
+      document.querySelectorAll('.counter-dot').forEach((dot, index) => {
+        dot.classList.toggle('active', index + 1 === currentQuestion);
+      });
+    }
+    
+    function updateNavButtons() {
+      document.getElementById('prev-btn').style.display = currentQuestion > 1 ? 'inline-block' : 'none';
+      
+      if (currentQuestion === totalQuestions) {
+        document.getElementById('next-btn').style.display = 'none';
+        document.getElementById('submit-btn').style.display = 'inline-block';
+      } else {
+        document.getElementById('next-btn').style.display = 'inline-block';
+        document.getElementById('submit-btn').style.display = 'none';
+      }
+    }
+    
+    function displayDetailedResults() {
+      // Question 1
+      const result1 = document.getElementById('result-1');
+      result1.querySelector('.user-answer').textContent = answers.q1 || '未回答';
+      result1.classList.toggle('correct', answers.q1 === correctAnswers.q1);
+      result1.classList.toggle('incorrect', answers.q1 !== correctAnswers.q1);
+      
+      // Question 2
+      const result2 = document.getElementById('result-2');
+      result2.querySelector('.user-answer').textContent = answers.q2.length > 0 ? answers.q2.join(', ') : '未回答';
+      result2.classList.toggle('correct', arraysEqual(answers.q2.sort(), correctAnswers.q2.sort()));
+      result2.classList.toggle('incorrect', !arraysEqual(answers.q2.sort(), correctAnswers.q2.sort()));
+      
+      // Question 3
+      const result3 = document.getElementById('result-3');
+      result3.querySelector('.user-answer').textContent = answers.q3 || '未回答';
+      result3.classList.toggle('correct', answers.q3 === correctAnswers.q3);
+      result3.classList.toggle('incorrect', answers.q3 !== correctAnswers.q3);
+      
+      // Question 4
+      const result4 = document.getElementById('result-4');
+      result4.querySelector('.user-answer').textContent = answers.q4.length > 0 ? answers.q4.join(', ') : '未回答';
+      result4.classList.toggle('correct', arraysEqual(answers.q4.sort(), correctAnswers.q4.sort()));
+      result4.classList.toggle('incorrect', !arraysEqual(answers.q4.sort(), correctAnswers.q4.sort()));
+      
+      // Question 5
+      const result5 = document.getElementById('result-5');
+      result5.querySelector('.user-answer').textContent = answers.q5 || '未回答';
+      result5.classList.toggle('correct', answers.q5 === correctAnswers.q5);
+      result5.classList.toggle('incorrect', answers.q5 !== correctAnswers.q5);
+    }
+    
+    function showResult(type, message) {
+      const resultEl = document.getElementById("result");
+      resultEl.innerHTML = message;
+      resultEl.classList.remove("success", "error", "warning", "info", "show");
+      
+      setTimeout(() => {
+        resultEl.classList.add(type, "show");
+      }, 10);
+    }
+    
+    function hideResult() {
+      const resultEl = document.getElementById("result");
+      resultEl.classList.remove("show");
+    }
+    
+    // Initialize counter dots
+    document.addEventListener('DOMContentLoaded', function() {
+      const cards = document.querySelectorAll('.card');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.animationPlayState = 'running';
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      cards.forEach(card => {
+        card.style.animation = 'fadeIn 0.6s ease forwards paused';
+        observer.observe(card);
+      });
+      
+      // Initialize counter dots
+      for (let i = 1; i <= totalQuestions; i++) {
+        const dot = document.createElement('div');
+        dot.className = 'counter-dot';
+        dot.id = `dot-${i}`;
+        if (i === 1) dot.classList.add('active');
+        document.querySelector('.quiz-counter').appendChild(dot);
+      }
+      
+      // Update nav buttons on load
+      updateNavButtons();
+    });
+  </script>
+</body>
+</html>
